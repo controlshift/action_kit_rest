@@ -2,6 +2,10 @@
 
 A ruby binding for the ActionKit REST API
 
+== Warning
+
+This is not yet working, do not use!
+
 == Copyright
 
 Copyright (c) 2013 ControlShift Ltd. See LICENSE.txt for
