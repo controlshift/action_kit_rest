@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem "activesupport"
 gem "faraday"
+gem "faraday_middleware"
 
 
 group :development do
