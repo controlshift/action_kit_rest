@@ -3,64 +3,42 @@ module ActionKitRest
 
     VALID_OPTIONS_KEYS = [
         :adapter,
-        :client_id,
-        :client_secret,
-        :oauth_token,
         :endpoint,
-        :site,
         :ssl,
         :mime_type,
         :user_agent,
-        :connection_options,
-        :repo,
-        :user,
-        :org,
-        :login,
+        :host,
+        :username,
         :password,
-        :basic_auth,
-        :auto_pagination
+        :connection_options,
     ].freeze
 
     # Other adapters are :typhoeus, :patron, :em_synchrony, :excon, :test
     DEFAULT_ADAPTER = :net_http
 
-    # By default, don't set an application key
-    DEFAULT_CLIENT_ID = nil
-
-    # By default, don't set an application secret
-    DEFAULT_CLIENT_SECRET = nil
-
-    # By default, don't set a user oauth access token
-    DEFAULT_OAUTH_TOKEN = nil
-
-    # By default, don't set a user login name
-    DEFAULT_LOGIN = nil
-
-    # By default, don't set a user password
-    DEFAULT_PASSWORD = nil
-
-    # By default, don't set a user basic authentication
-    DEFAULT_BASIC_AUTH = nil
-
-    # The api endpoint used to connect to GitHub if none is set
-    DEFAULT_ENDPOINT = 'https://api.github.com'.freeze
-
-
     # The default SSL configuration
     DEFAULT_SSL = {}
-
-    # The value sent in the http header for 'User-Agent' if none is set
-    DEFAULT_USER_AGENT = "ActionKit REST Gem #{ActionkitRest::VERSION::STRING}".freeze
 
     # By default the <tt>Accept</tt> header will make a request for <tt>JSON</tt>
     DEFAULT_MIME_TYPE = :json
 
+    # The value sent in the http header for 'User-Agent' if none is set
+    DEFAULT_USER_AGENT = "ActionKit REST Gem #{ActionKitRest::VERSION::STRING}".freeze
+
+    # by default do not set a host. this is specific to AK instance
+    DEFAULT_HOST = nil
+
+    # The api endpoint used to connect to AK if none is set
+    DEFAULT_ENDPOINT = '/rest/v1/'.freeze
+
+    # By default, don't set a user ame
+    DEFAULT_USERNAME = nil
+
+    # By default, don't set a user password
+    DEFAULT_PASSWORD = nil
+
     # By default uses the Faraday connection options if none is set
     DEFAULT_CONNECTION_OPTIONS = {}
-
-    # By default, don't set user name
-    DEFAULT_USER = nil
-
 
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -90,22 +68,14 @@ module ActionKitRest
     #
     def reset!
       self.adapter            = DEFAULT_ADAPTER
-      self.client_id          = DEFAULT_CLIENT_ID
-      self.client_secret      = DEFAULT_CLIENT_SECRET
-      self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.endpoint           = DEFAULT_ENDPOINT
-      self.site               = DEFAULT_SITE
       self.ssl                = DEFAULT_SSL
-      self.user_agent         = DEFAULT_USER_AGENT
-      self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self.mime_type          = DEFAULT_MIME_TYPE
-      self.user               = DEFAULT_USER
-      self.repo               = DEFAULT_REPO
-      self.org                = DEFAULT_ORG
-      self.login              = DEFAULT_LOGIN
+      self.user_agent         = DEFAULT_USER_AGENT
+      self.host               = DEFAULT_HOST
+      self.username           = DEFAULT_USERNAME
       self.password           = DEFAULT_PASSWORD
-      self.basic_auth         = DEFAULT_BASIC_AUTH
-      self.auto_pagination    = DEFAULT_AUTO_PAGINATION
+      self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self
     end
   end # Configuration

@@ -16,6 +16,8 @@ GEM
     diff-lcs (1.2.1)
     faraday (0.8.6)
       multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     git (1.2.5)
     guard (1.6.2)
       listen (>= 0.6.0)
@@ -68,6 +70,7 @@ DEPENDENCIES
   activesupport
   bundler
   faraday
+  faraday_middleware
   guard
   guard-rspec
   jeweler (~> 1.8.4)
