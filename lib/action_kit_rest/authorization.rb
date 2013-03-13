@@ -13,6 +13,5 @@ module ActionKitRest
     def authentication
       { :basic_auth => basic_auth }
     end
-
   end # Authorization
 end
