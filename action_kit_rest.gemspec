@@ -25,10 +25,13 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/actionkit-rest.rb",
+    "actionkit-rest.gemspec",
+    "lib/action_kit_rest.rb",
+    "lib/action_kit_rest/configuration.rb",
+    "lib/action_kit_rest/version.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://github.com/controlshift/actionkit-rest"
+  s.homepage = "http://github.com/controlshift/action_kit_rest"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"

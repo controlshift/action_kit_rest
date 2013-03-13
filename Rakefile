@@ -12,10 +12,13 @@ end
 require 'rake'
 
 require 'jeweler'
+require './lib/action_kit_rest/version.rb'
+
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "actionkit-rest"
-  gem.homepage = "http://github.com/controlshift/actionkit-rest"
+  gem.name = "action_kit_rest"
+  gem.version = ActionKitRest::VERSION::STRING
+  gem.homepage = "http://github.com/controlshift/action_kit_rest"
   gem.license = "MIT"
   gem.summary = %Q{A wrapper for the ActionKit REST API}
   gem.description = %Q{Gem for interacting with the ActionKit API}
@@ -41,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "actionkit-rest #{version}"
+  rdoc.title = "action_kit_rest #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

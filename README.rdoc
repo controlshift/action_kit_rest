@@ -1,4 +1,4 @@
-= actionkit-rest
+= action_kit_rest
 
 A ruby binding for the ActionKit REST API
 
