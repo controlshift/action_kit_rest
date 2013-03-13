@@ -15,32 +15,26 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "actionkit-rest"
-  gem.homepage = "http://github.com/woodhull/actionkit-rest"
+  gem.homepage = "http://github.com/controlshift/actionkit-rest"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A wrapper for the ActionKit REST API}
+  gem.description = %Q{Gem for interacting with the ActionKit API}
   gem.email = "woodhull@gmail.com"
   gem.authors = ["Nathan Woodhull"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
+require 'rspec/core/rake_task'
+desc 'Default: run specs.'
+task :default => :spec
 
-task :default => :test
+desc "Run specs"
+RSpec::Core::RakeTask.new do |t|
+  t.pattern = "./spec/**/*_spec.rb" # don't need this, it's default.
+  t.rspec_opts = '--color'
+end
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
