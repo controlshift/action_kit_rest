@@ -7,6 +7,8 @@ require 'action_kit_rest/client'
 require 'action_kit_rest/page'
 require 'action_kit_rest/core_ext/array'
 require 'action_kit_rest/response/wrapper'
+require 'action_kit_rest/response/collection'
+require 'active_support/all'
 
 
 module ActionKitRest

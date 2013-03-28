@@ -26,6 +26,12 @@ module ActionKitRest
       request(:delete, path, params, options)
     end
 
+    def post_json_request(path, params)
+      p = {}
+      p['data'] = params.to_json
+      post_request(path, p)
+    end
+
     def request(method, path, params, options) # :nodoc:
       if !METHODS.include?(method)
         raise ArgumentError, "unkown http method: #{method}"
@@ -34,7 +40,6 @@ module ActionKitRest
       puts "EXECUTED: #{method} - #{path} with #{params} and #{options}" if ENV['DEBUG']
 
       conn = connection(options.merge(current_options))
-
       path =  conn.path_prefix + '/' + path
 
       response = conn.send(method) do |request|
@@ -47,21 +52,18 @@ module ActionKitRest
             request.body = extract_data_from_params(params) unless params.empty?
         end
       end
-      response
+      ActionKitRest::Response::Wrapper.new(response)
       #ResponseWrapper.new(response, self).auto_paginate
     end
 
     private
 
     def extract_data_from_params(params) # :nodoc:
-      return params['data'] if params.has_key?('data') and !params['data'].nil?
-      return params
+      if params.has_key?('data') && params['data'].present?
+        return params['data']
+      else
+        return params
+      end
     end
-
-    def _extract_mime_type(params, options) # :nodoc:
-      options['resource']  = params['resource'] ? params.delete('resource') : ''
-      options['mime_type'] = params['resource'] ? params.delete('mime_type') : ''
-    end
-
-  end # Request
+  end
 end

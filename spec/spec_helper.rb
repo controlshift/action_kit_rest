@@ -18,8 +18,17 @@ RSpec.configure do |config|
 
 end
 
-def stub_get(path, prefix = ActionKitRest.prefix.to_s)
-  stub_request(:get, "https://test.com" + prefix + path)
+def stub_get(path)
+  stub_action_kit_request(:get, path)
+end
+
+def stub_post(path)
+  stub_action_kit_request(:post, path)
+end
+
+def stub_action_kit_request(method, path)
+  prefix = ActionKitRest.prefix.to_s
+  stub_request(method, "https://test.com" + prefix + path)
 end
 
 def reset_authentication_for(object)
