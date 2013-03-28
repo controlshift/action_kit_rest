@@ -1,8 +1,8 @@
-= action_kit_rest
+# action_kit_rest
 
 A ruby binding for the ActionKit REST API
 
-== Usage
+## Usage
 
 ```ruby
 
@@ -16,7 +16,7 @@ end
 
 This is very experimental still, but starting to be usable.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2013 ControlShift Ltd. See LICENSE.txt for
 further details.
