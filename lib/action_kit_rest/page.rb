@@ -7,9 +7,5 @@ module ActionKitRest
     def get(id)
       get_request("page/#{id}/")
     end
-
-    def create(params)
-      post_json_request("page/", params)
-    end
   end
 end

@@ -2,9 +2,19 @@
 
 A ruby binding for the ActionKit REST API
 
-== Warning
+== Usage
 
-This is not yet working, do not use!
+```ruby
+
+ak = ActionKitRest.new(host: 'roboticdogs.actionkit.com', username: 'name', password: 'pass')
+ak.import_page.create(title: "Title", name: "name")
+ak.import_page.list.each do | page |
+  puts page.name
+end
+
+```
+
+This is very experimental still, but starting to be usable.
 
 == Copyright
 

@@ -24,3 +24,5 @@ tmtags
 .idea
 
 tmp/
+
+example.rb

@@ -6,5 +6,9 @@ module ActionKitRest
     def page(options={}, &block)
       @page ||= Page.new(current_options.merge(options), &block)
     end
+
+    def import_page(options={}, &block)
+      @page ||= Pages::ImportPage.new(current_options.merge(options), &block)
+    end
   end
 end
