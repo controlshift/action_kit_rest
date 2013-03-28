@@ -3,6 +3,8 @@ source "http://rubygems.org"
 gem "activesupport"
 gem "faraday"
 gem "faraday_middleware"
+gem "activesupport"
+gem "hashie"
 
 
 group :development do
@@ -12,6 +14,7 @@ group :development do
   gem "pry"
   gem "pry-debugger"
   gem "rb-fsevent"
+  gem "webmock"
 
 
   gem "rdoc"

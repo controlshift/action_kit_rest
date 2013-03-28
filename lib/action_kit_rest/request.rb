@@ -34,9 +34,8 @@ module ActionKitRest
       puts "EXECUTED: #{method} - #{path} with #{params} and #{options}" if ENV['DEBUG']
 
       conn = connection(options.merge(current_options))
-      if conn.path_prefix != '/' && path.index(conn.path_prefix) != 0
-        path = (conn.path_prefix + path).gsub(/\/(\/)*/, '/')
-      end
+
+      path =  conn.path_prefix + '/' + path
 
       response = conn.send(method) do |request|
         case method.to_sym
@@ -48,7 +47,8 @@ module ActionKitRest
             request.body = extract_data_from_params(params) unless params.empty?
         end
       end
-      ResponseWrapper.new(response, self).auto_paginate
+      response
+      #ResponseWrapper.new(response, self).auto_paginate
     end
 
     private

@@ -4,6 +4,9 @@ require 'action_kit_rest/request'
 require 'action_kit_rest/constants'
 require 'action_kit_rest/authorization'
 require 'action_kit_rest/client'
+require 'action_kit_rest/page'
+require 'action_kit_rest/core_ext/array'
+require 'action_kit_rest/response/wrapper'
 
 
 module ActionKitRest
