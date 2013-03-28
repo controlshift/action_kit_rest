@@ -117,6 +117,14 @@ module ActionKitRest
 
     private
 
+    def extract_id_from_response(resp)
+      extract_id_from_location(resp.response.headers["location"])
+    end
+
+    def extract_id_from_location(location)
+      location.scan(/\/(\d+)\/$/).first.first
+    end
+
     # Set multiple options
     #
     def set_options(options)

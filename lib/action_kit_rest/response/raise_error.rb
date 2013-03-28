@@ -4,8 +4,6 @@ module ActionKitRest
 
       def on_complete(response)
         status_code = response[:status].to_i
-        require 'pry-debugger'
-        binding.pry
         raise Exception.new(error_message(response)) if (400...600).include? status_code
       end
 

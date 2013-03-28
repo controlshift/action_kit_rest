@@ -7,27 +7,14 @@ describe ActionKitRest::API do
   it { described_class.included_modules.should include ActionKitRest::Connection }
   it { described_class.included_modules.should include ActionKitRest::Request }
 
-  context 'actions' do
-    let(:options) { { } }
-    #let(:repos) { Github::Repos }
-    #
-    #it { should respond_to :api_methods_in }
-    #
-    #it 'dynamically adds actions inspection to classes inheriting from api' do
-    #  repos.should respond_to :actions
-    #  repos.new.should respond_to :actions
-    #end
-    #
-    #it 'ensures output contains api methods' do
-    #  methods = [ 'method_a', 'method_b']
-    #  repos.stub(:instance_methods).and_return methods
-    #  output = capture(:stdout) {
-    #    subject.api_methods_in(repos)
-    #  }
-    #  output.should =~ /.*method_a.*/
-    #  output.should =~ /.*method_b.*/
-    #end
+
+  describe '#extract_id_from_location' do
+    let(:options) { {} }
+    it "should extract the id" do
+      subject.send(:extract_id_from_location, "https://roboticdogs.actionkit.com/rest/v1/importpage/1093/").should == "1093"
+    end
   end
+
 
   context 'process_basic_auth' do
     let(:options) { { :basic_auth => 'login:password' } }
@@ -38,4 +25,6 @@ describe ActionKitRest::API do
 
     its(:basic_auth) { should eq 'login:password' }
   end
+
+
 end

@@ -10,5 +10,9 @@ module ActionKitRest
     def import_page(options={}, &block)
       @page ||= Pages::ImportPage.new(current_options.merge(options), &block)
     end
+
+    def signup_page(options={}, &block)
+      @page ||= Pages::SignupPage.new(current_options.merge(options), &block)
+    end
   end
 end

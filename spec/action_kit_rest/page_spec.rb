@@ -39,21 +39,4 @@ describe ActionKitRest::Page do
       end
     end
   end
-
-  describe "creation" do
-    let(:body) { "" }
-    let(:request_body) { {title: "Title", name: "name"}.to_json  }
-    let(:request_path) { 'page/' }
-
-    before(:each) do
-      stub_post(request_path).with(body: request_body).to_return(:body => body, :status => status,
-                                        :headers => {:content_type => "application/json; charset=utf-8"})
-    end
-
-    describe ".create" do
-      it "should allow creation" do
-        @actionkit.page.create(title: "Title", name: "name")
-      end
-    end
-  end
 end

@@ -11,16 +11,12 @@ module ActionKitRest
 
       def create(params)
         resp = post_json_request(base_path, params)
-        id = extract_id_from_location(resp)
+        id = extract_id_from_response(resp)
         get(id)
       end
 
       private
 
-      def extract_id_from_location(resp)
-        location = resp[:response_headers]["location"]
-        location.scan(/\/(\d+)\/$/).first
-      end
     end
   end
 end
