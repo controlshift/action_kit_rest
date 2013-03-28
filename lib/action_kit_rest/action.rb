@@ -1,8 +1,7 @@
 module ActionKitRest
-  class Action < API
-    def create
-      post_json_request("action/", params)
+  class Action < Base
+    def base_path
+      'action'
     end
-
   end
 end

@@ -1,8 +1,8 @@
 module ActionKitRest
   module Pages
-    class ImportPage < Base
+    class ImportPage < ActionKitRest::Base
       def base_path
-        "importpage/"
+        'importpage'
       end
     end
   end
