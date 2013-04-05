@@ -7,7 +7,7 @@ describe ActionKitRest::Pages::ImportPage do
 
   let(:status) { 200 }
 
-  describe "creation" do
+  describe "create" do
     let(:body) { "" }
     let(:request_body) { {title: "Title", name: "name"}.to_json  }
     let(:request_path) { 'importpage/' }
@@ -21,7 +21,8 @@ describe ActionKitRest::Pages::ImportPage do
 
     describe ".create" do
       it "should allow creation" do
-        @actionkit.import_page.create(title: "Title", name: "name")
+        resp = @actionkit.import_page.create(title: "Title", name: "name")
+        resp.title.should == 'Demand a Sustainable USDA'
       end
     end
   end
