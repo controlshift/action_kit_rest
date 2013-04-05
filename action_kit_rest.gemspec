@@ -12,17 +12,13 @@ Gem::Specification.new do |s|
   s.date = "2013-03-13"
   s.description = "Gem for interacting with the ActionKit API"
   s.email = "woodhull@gmail.com"
-  s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.md"
-  ]
+
   s.files = [
-    ".document",
     ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "action_kit_rest.gemspec",
