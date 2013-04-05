@@ -23,6 +23,7 @@ describe ActionKitRest::Pages::ImportPage do
       it "should allow creation" do
         resp = @actionkit.import_page.create(title: "Title", name: "name")
         resp.title.should == 'Demand a Sustainable USDA'
+
       end
     end
   end
