@@ -1,3 +1,12 @@
+PATH
+  remote: .
+  specs:
+    action_kit_rest (0.1.0)
+      activesupport
+      faraday
+      faraday_middleware
+      hashie
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -73,13 +82,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
+  action_kit_rest!
   bundler
-  faraday
-  faraday_middleware
   guard
   guard-rspec
-  hashie
   jeweler (~> 1.8.4)
   pry
   pry-debugger
