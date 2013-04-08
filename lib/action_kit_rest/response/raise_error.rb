@@ -4,12 +4,20 @@ module ActionKitRest
 
       def on_complete(response)
         status_code = response[:status].to_i
-        raise Exception.new(error_message(response)) if (400...600).include? status_code
+        if (400...600).include? status_code
+          if status_code == 404
+            raise ActionKitRest::Response::NotFound.new(response[:url].to_s)
+          else
+            raise Exception.new(error_message(response))
+          end
+        end
       end
 
       def error_message(response)
-        "#{response[:method].to_s.upcase} #{response[:url].to_s}: #{response[:response_headers]['status']}#{(': ' + response[:body]['error']) if response[:body] && response[:body]['error']}"
+        "#{response[:method].to_s.upcase} #{response[:url].to_s}: #{response[:response_headers]['status']}#{response[:body] if response[:body]}"
       end
     end
+
+    class NotFound < Exception ; end
   end # Response::RaiseError
 end

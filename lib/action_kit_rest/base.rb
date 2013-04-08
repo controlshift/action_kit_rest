@@ -1,7 +1,7 @@
 module ActionKitRest
   class Base < API
-    def list
-      get_request(normalized_base_path)
+    def list(filters = {})
+      get_request(normalized_base_path, filters)
     end
 
     def get(id)

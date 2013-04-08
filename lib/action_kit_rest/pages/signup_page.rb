@@ -1,6 +1,6 @@
 module ActionKitRest
   module Pages
-    class SignupPage < ActionKitRest::Base
+    class SignupPage < ActionKitRest::Pages::Base
       def base_path
         'signuppage'
       end
