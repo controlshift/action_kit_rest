@@ -12,7 +12,7 @@ module ActionKitRest
     def find_or_create(name)
       tag = find(name)
       if tag.blank?
-        tag = create(name)
+        tag = create(name: name)
       end
       tag
     end
