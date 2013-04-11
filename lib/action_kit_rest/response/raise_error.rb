@@ -14,7 +14,7 @@ module ActionKitRest
       end
 
       def error_message(response)
-        "#{response[:method].to_s.upcase} #{response[:url].to_s}: #{response[:response_headers]['status']}#{response[:body] if response[:body]}"
+        "#{response[:method].to_s.upcase} #{response[:url].to_s}: #{response[:status]} \n\n #{response[:body] if response[:body]}"
       end
     end
 
