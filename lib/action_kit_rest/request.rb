@@ -37,7 +37,7 @@ module ActionKitRest
         raise ArgumentError, "unkown http method: #{method}"
       end
 
-      puts "EXECUTED: #{method} - #{path} with #{params} and #{options}" if ENV['DEBUG']
+      ActionKitRest.logger.debug "EXECUTED: #{method} - #{path} with #{params} and #{options}"
 
       conn = connection(options.merge(current_options))
       path =  conn.path_prefix + '/' + path

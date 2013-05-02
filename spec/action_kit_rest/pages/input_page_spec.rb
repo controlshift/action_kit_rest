@@ -3,6 +3,8 @@ require 'spec_helper'
 describe ActionKitRest::Pages::ImportPage do
   before(:each) do
     @actionkit = ActionKitRest.new(host: 'test.com')
+    ActionKitRest.stub(:logger).and_return(logger = mock)
+    logger.stub(:debug).and_return(true)
   end
 
   let(:status) { 200 }

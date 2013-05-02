@@ -15,13 +15,21 @@ require 'action_kit_rest/core_ext/array'
 require 'action_kit_rest/response/wrapper'
 require 'action_kit_rest/response/collection'
 require 'active_support/all'
+require 'action_kit_rest/railties' if defined? Rails
+
 
 
 module ActionKitRest
   extend Configuration
 
-
   class << self
+    def logger
+      @@logger ||= Logger.new(STDOUT)
+    end
+
+    def logger=(logger)
+      @@logger = logger
+    end
 
     # Alias for ActionKitRest::Client.new
     #

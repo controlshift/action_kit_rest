@@ -70,7 +70,7 @@ module ActionKitRest
     def connection(options={})
       conn_options = default_options(options)
       clear_cache unless options.empty?
-      puts "OPTIONS:#{conn_options.inspect}" if ENV['DEBUG']
+      ActionKitRest.logger.debug "OPTIONS:#{conn_options.inspect}"
 
       @connection ||= Faraday.new(conn_options.merge(:builder => stack(options)))
     end
