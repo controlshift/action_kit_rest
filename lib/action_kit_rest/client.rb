@@ -22,5 +22,9 @@ module ActionKitRest
     def tag(options={}, &block)
       @tag ||= ActionKitRest::Tag.new(current_options.merge(options), &block)
     end
+    
+    def list(options={}, &block)
+      @list ||= ActionKitRest::List.new(current_options.merge(options), &block)
+    end  
   end
 end
