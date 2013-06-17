@@ -5,7 +5,9 @@ module ActionKitRest
       def on_complete(response)
         status_code = response[:status].to_i
         if (400...600).include? status_code
-          if status_code == 404
+          if status_code == 400
+            raise ActionKitRest::Response::ValidationError.new(url: response[:url].to_s, body: response[:body])
+          elsif status_code == 404
             raise ActionKitRest::Response::NotFound.new(response[:url].to_s)
           else
             raise Exception.new(error_message(response))

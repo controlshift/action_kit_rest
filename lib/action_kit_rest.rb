@@ -14,6 +14,7 @@ require 'action_kit_rest/pages/import_page'
 require 'action_kit_rest/pages/signup_page'
 require 'action_kit_rest/core_ext/array'
 require 'action_kit_rest/response/wrapper'
+require 'action_kit_rest/response/validation_error'
 require 'action_kit_rest/response/collection'
 require 'active_support/all'
 require 'action_kit_rest/railties' if defined? Rails

@@ -52,6 +52,15 @@ describe ActionKitRest::Page do
           lambda{ @actionkit.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::NotFound)
         end
       end
+      
+      describe "error" do
+        let(:status) { 400 }
+        let(:body) { fixture('error.json') }
+        
+        it "should raise an ak validation response error" do
+          lambda{ @actionkit.page.get(1) }.should raise_exception(ActionKitRest::Response::ValidationError)
+        end  
+      end
 
       describe "an error" do
         let(:status) { 500 }
