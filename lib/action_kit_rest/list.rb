@@ -1,13 +1,9 @@
 module ActionKitRest
   class List < Base
-    def list
-      get_request("list/")
+    def base_path
+      'list'
     end
 
-    def get(id)
-      get_request("list/#{id}/")
-    end
-    
     def find(name)
       response = list(name: name)
       response.obj.first
