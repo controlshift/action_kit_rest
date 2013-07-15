@@ -3,8 +3,18 @@ require 'spec_helper'
 describe ActionKitRest::Page do
   before(:each) do
     @actionkit = ActionKitRest.new(host: 'test.com')
-    ActionKitRest.stub(:logger).and_return(logger = mock)
+
+    logger = mock
     logger.stub(:debug).and_return(true)
+
+    ActionKitRest.stub(:logger).and_return(logger)
+    Vertebrae::Base.stub(:logger).and_return(logger)
+  end
+
+  describe 'configuration' do
+    it 'should propagate the host to the page' do
+      @actionkit.page.host.should == 'test.com'
+    end
   end
 
   describe "retrieval" do

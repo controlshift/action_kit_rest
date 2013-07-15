@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActionKitRest::Authorization do
+describe Vertebrae::Authorization do
   let(:options) { {} }
 
   subject(:ak) { ActionKitRest.new options }

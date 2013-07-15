@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "action_kit_rest.gemspec",
     "lib/action_kit_rest.rb",
-    "lib/action_kit_rest/configuration.rb",
     "lib/action_kit_rest/version.rb",
     "spec/spec_helper.rb"
   ]
@@ -33,10 +32,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.24"
   s.summary = "A wrapper for the ActionKit REST API"
 
-  s.add_runtime_dependency(%q<activesupport>, [">= 0"])
-  s.add_runtime_dependency(%q<faraday>, [">= 0"])
-  s.add_runtime_dependency(%q<faraday_middleware>, [">= 0"])
-  s.add_runtime_dependency(%q<hashie>, [">= 0"])
+  s.add_runtime_dependency(%q<vertebrae>, [">= 0"])
   s.add_development_dependency(%q<rspec>, [">= 0"])
   s.add_development_dependency(%q<guard>, [">= 0"])
   s.add_development_dependency(%q<guard-rspec>, [">= 0"])
