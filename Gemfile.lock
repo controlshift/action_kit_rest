@@ -79,7 +79,7 @@ GEM
     thread_safe (0.1.0)
       atomic
     tzinfo (0.3.37)
-    vertebrae (0.1.3)
+    vertebrae (0.1.4)
       activesupport
       faraday
       faraday_middleware
