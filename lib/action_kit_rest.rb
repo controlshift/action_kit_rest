@@ -1,19 +1,16 @@
 require 'vertebrae'
-require 'action_kit_rest/configuration'
 
 module ActionKitRest
   extend Vertebrae::Base
-  include ActionKitRest::Configuration
 
   class << self
-    def new(options = {}, &block)
-      ActionKitRest::Client.new(options, &block)
+    def new(options = {})
+      ActionKitRest::Client.new(options)
     end
   end
 end
 
 require 'action_kit_rest/version'
-require 'action_kit_rest/request'
 require 'action_kit_rest/client'
 require 'action_kit_rest/page'
 require 'action_kit_rest/base'
@@ -24,6 +21,7 @@ require 'action_kit_rest/pages/base'
 require 'action_kit_rest/pages/import_page'
 require 'action_kit_rest/pages/signup_page'
 require 'action_kit_rest/response/wrapper'
+require 'action_kit_rest/response/raise_error'
 require 'action_kit_rest/response/validation_error'
 require 'action_kit_rest/response/collection'
 require 'active_support/all'

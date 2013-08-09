@@ -3,28 +3,29 @@ require 'action_kit_rest/api'
 module ActionKitRest
   class Client < API
 
-    def page(options={}, &block)
-      @page ||= ActionKitRest::Page.new(current_options.merge(options), &block)
+    def page
+      @page ||= ActionKitRest::Page.new(client: self)
     end
 
-    def import_page(options={}, &block)
-      @import_page ||= ActionKitRest::Pages::ImportPage.new(current_options.merge(options), &block)
+    def import_page
+      @import_page ||= ActionKitRest::Pages::ImportPage.new(client: self)
     end
 
-    def signup_page(options={}, &block)
-      @signup_page ||= ActionKitRest::Pages::SignupPage.new(current_options.merge(options), &block)
+    def signup_page
+      @signup_page ||= ActionKitRest::Pages::SignupPage.new(client: self)
     end
 
-    def action(options={}, &block)
-      @action ||= ActionKitRest::Action.new(current_options.merge(options), &block)
+    def action
+      @action ||= ActionKitRest::Action.new(client: self)
     end
 
-    def tag(options={}, &block)
-      @tag ||= ActionKitRest::Tag.new(current_options.merge(options), &block)
+    def tag
+      @tag ||= ActionKitRest::Tag.new(client: self)
     end
     
-    def list(options={}, &block)
-      @list ||= ActionKitRest::List.new(current_options.merge(options), &block)
-    end  
+    def list
+      @list ||= ActionKitRest::List.new(client: self)
+    end
+
   end
 end

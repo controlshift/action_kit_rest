@@ -1,3 +1,0 @@
-module Response
-
-end

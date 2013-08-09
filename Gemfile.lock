@@ -14,7 +14,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.3)
-    atomic (1.1.10)
+    atomic (1.1.12)
     coderay (1.0.9)
     columnize (0.3.6)
     crack (0.3.2)
@@ -26,8 +26,8 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.1)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
     git (1.2.5)
@@ -52,7 +52,7 @@ GEM
     lumberjack (1.0.2)
     method_source (0.8.1)
     minitest (4.7.5)
-    multi_json (1.7.7)
+    multi_json (1.7.8)
     multipart-post (1.2.0)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -76,10 +76,10 @@ GEM
     slop (3.4.4)
     terminal-table (1.4.5)
     thor (0.17.0)
-    thread_safe (0.1.0)
+    thread_safe (0.1.2)
       atomic
     tzinfo (0.3.37)
-    vertebrae (0.1.6)
+    vertebrae (0.2.2)
       activesupport
       faraday
       faraday_middleware

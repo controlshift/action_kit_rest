@@ -13,17 +13,20 @@ describe ActionKitRest::Page do
 
   describe 'configuration' do
     it 'should propagate the host to the page' do
-      @actionkit.page.host.should == 'test.com'
+      @actionkit.connection.configuration.host.should == 'test.com'
+    end
+
+    it "should have a client" do
+      @actionkit.page.client.should_not be_nil
     end
   end
+
 
   describe "retrieval" do
     before(:each) do
       stub_get(request_path).to_return(:body => body, :status => status,
                                        :headers => {:content_type => "application/json; charset=utf-8"})
     end
-
-
 
     describe ".list" do
       let(:status) { 200 }

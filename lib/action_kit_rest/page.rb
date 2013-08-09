@@ -1,11 +1,11 @@
 module ActionKitRest
-  class Page < API
+  class Page < Vertebrae::Model
     def list
-      get_request("page/")
+      client.get_request("page/")
     end
 
     def get(id)
-      get_request("page/#{id}/")
+      client.get_request("page/#{id}/")
     end
   end
 end

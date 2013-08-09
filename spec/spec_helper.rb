@@ -8,7 +8,6 @@ require 'action_kit_rest'
 RSpec.configure do |config|
   config.include WebMock::API
 
-
   config.before(:each) do
     WebMock.reset!
   end
@@ -27,17 +26,9 @@ def stub_post(path)
 end
 
 def stub_action_kit_request(method, path)
-  prefix = ActionKitRest.prefix.to_s
-  stub_request(method, "https://test.com" + prefix + path)
+  prefix = ActionKitRest.new.connection.configuration.prefix.to_s
+  stub_request(method, 'https://test.com' + prefix + path)
 end
-
-def reset_authentication_for(object)
-  [ 'username', 'password' ].each do |item|
-    ActionKitRest.send("#{item}=", nil)
-    object.send("#{item}=", nil)
-  end
-end
-
 
 def fixture_path
   File.expand_path("../fixtures", __FILE__)
