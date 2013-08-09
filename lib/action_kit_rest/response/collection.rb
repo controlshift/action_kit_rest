@@ -9,7 +9,6 @@ module ActionKitRest
       attr_reader :objects
 
 
-
       def initialize(meta, objects)
         @meta = meta
         @objects = objects

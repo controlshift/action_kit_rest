@@ -15,6 +15,11 @@ module ActionKitRest
       get(id)
     end
 
+    def update(id, params)
+      client.put_json_request("#{normalized_base_path}#{id}/", params)
+      get(id)
+    end
+
     def normalized_base_path
       "#{base_path}/"
     end

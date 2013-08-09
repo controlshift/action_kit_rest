@@ -12,6 +12,12 @@ module ActionKitRest
       post_request(path, p)
     end
 
+    def put_json_request(path, params)
+      p = {}
+      p['data'] = params.to_json
+      put_request(path, p)
+    end
+
     def extract_data_from_params(params) # :nodoc:
       if params.has_key?('data') && params['data'].present?
         return params['data']
