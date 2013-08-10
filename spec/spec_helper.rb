@@ -25,6 +25,10 @@ def stub_post(path)
   stub_action_kit_request(:post, path)
 end
 
+def stub_put(path)
+  stub_action_kit_request(:put, path)
+end
+
 def stub_action_kit_request(method, path)
   prefix = ActionKitRest.new.connection.configuration.prefix.to_s
   stub_request(method, 'https://test.com' + prefix + path)
