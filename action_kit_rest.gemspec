@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.email = "woodhull@gmail.com"
 
   s.files = [
-    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",

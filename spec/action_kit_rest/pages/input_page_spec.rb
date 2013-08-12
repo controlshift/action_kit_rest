@@ -10,7 +10,6 @@ describe ActionKitRest::Pages::ImportPage do
   end
 
   let(:actionkit) { ActionKitRest.new(host: 'test.com')  }
-
   let(:status) { 200 }
 
   describe "create" do
