@@ -10,11 +10,8 @@ module ActionKitRest
         super()
       end
 
-      def inspect
-        puts "url: #{url}"
-        puts "body: #{body}"
-        puts "errors: #{errors}"
-        super()
+      def to_s
+        "#{super()} \n url: #{url} \n body: #{body} \n errors: #{errors}"
       end
       
     end
