@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    action_kit_rest (0.1.0)
+    action_kit_rest (0.1.1)
       action_kit_rest
 
 GEM
