@@ -26,6 +26,10 @@ module ActionKitRest
     def list
       @list ||= ActionKitRest::List.new(client: self)
     end
+    
+    def user
+      @user ||= ActionKitRest::User.new(client: self)
+    end
 
   end
 end
