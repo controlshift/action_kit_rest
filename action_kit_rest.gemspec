@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nathan Woodhull"]
-  s.date = "2013-10-03"
+  s.date = "2013-10-04"
   s.description = "Gem for interacting with the ActionKit API"
   s.email = "woodhull@gmail.com"
   s.extra_rdoc_files = [
@@ -77,6 +77,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_runtime_dependency(%q<vertebrae>, [">= 0"])
     else
       s.add_dependency(%q<action_kit_rest>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
@@ -89,6 +90,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<webmock>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_dependency(%q<vertebrae>, [">= 0"])
     end
   else
     s.add_dependency(%q<action_kit_rest>, [">= 0"])
@@ -102,6 +104,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<webmock>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+    s.add_dependency(%q<vertebrae>, [">= 0"])
   end
 end
 

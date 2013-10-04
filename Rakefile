@@ -25,6 +25,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = "woodhull@gmail.com"
   gem.authors = ["Nathan Woodhull"]
   # dependencies defined in Gemfile
+  gem.add_dependency 'vertebrae'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
