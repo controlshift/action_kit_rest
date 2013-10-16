@@ -26,6 +26,7 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Nathan Woodhull"]
   # dependencies defined in Gemfile
   gem.add_dependency 'vertebrae'
+  gem.add_dependency 'em-synchrony'
 end
 Jeweler::RubygemsDotOrgTasks.new
 

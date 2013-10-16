@@ -46,7 +46,8 @@ module ActionKitRest
         builder.use FaradayMiddleware::ParseJson
 
         builder.use  ActionKitRest::Response::RaiseError
-        builder.adapter connection.configuration.adapter
+
+        builder.adapter :em_synchrony
       end
     end
   end
