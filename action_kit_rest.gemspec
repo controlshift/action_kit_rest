@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "action_kit_rest"
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nathan Woodhull"]
-  s.date = "2013-10-04"
+  s.date = "2013-10-22"
   s.description = "Gem for interacting with the ActionKit API"
   s.email = "woodhull@gmail.com"
   s.extra_rdoc_files = [
@@ -49,6 +49,8 @@ Gem::Specification.new do |s|
     "spec/action_kit_rest/logger_spec.rb",
     "spec/action_kit_rest/page_spec.rb",
     "spec/action_kit_rest/pages/input_page_spec.rb",
+    "spec/action_kit_rest/response/collection_spec.rb",
+    "spec/action_kit_rest/response/wrapper_spec.rb",
     "spec/action_kit_rest/user_spec.rb",
     "spec/fixtures/error.json",
     "spec/fixtures/page/collection.json",
@@ -77,14 +79,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
-      s.add_runtime_dependency(%q<em-synchrony>, [">= 0"])
-      s.add_runtime_dependency(%q<em-http-request>, [">= 0"])
       s.add_runtime_dependency(%q<vertebrae>, [">= 0"])
     else
       s.add_dependency(%q<action_kit_rest>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<guard>, [">= 0"])
-      s.add_dependency(%q<em-synchrony>, [">= 0"])
       s.add_dependency(%q<guard-rspec>, [">= 0"])
       s.add_dependency(%q<pry>, [">= 0"])
       s.add_dependency(%q<pry-debugger>, [">= 0"])
@@ -99,7 +98,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<action_kit_rest>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<guard>, [">= 0"])
-    s.add_dependency(%q<em-synchrony>, [">= 0"])
     s.add_dependency(%q<guard-rspec>, [">= 0"])
     s.add_dependency(%q<pry>, [">= 0"])
     s.add_dependency(%q<pry-debugger>, [">= 0"])
