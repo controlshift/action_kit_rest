@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe ActionKitRest::Page do
-  before(:each) do
-    @actionkit = ActionKitRest.new(host: 'test.com')
+  subject { ActionKitRest.new(host: 'test.com') }
 
+  before(:each) do
     logger = mock
     logger.stub(:debug).and_return(true)
 
@@ -13,11 +13,19 @@ describe ActionKitRest::Page do
 
   describe 'configuration' do
     it 'should propagate the host to the page' do
-      @actionkit.connection.configuration.host.should == 'test.com'
+      subject.connection.configuration.host.should == 'test.com'
     end
 
     it "should have a client" do
-      @actionkit.page.client.should_not be_nil
+      subject.page.client.should_not be_nil
+    end
+
+    describe 'adapter' do
+      subject { ActionKitRest.new(host: 'test.com', adapter: :em_synchrony) }
+
+      it 'should propagate the adapter' do
+        subject.connection.configuration.adapter.should == :em_synchrony
+      end
     end
   end
 
@@ -34,7 +42,7 @@ describe ActionKitRest::Page do
       let(:request_path) { 'page/' }
 
       it "should allow listing the objects" do
-        pages = @actionkit.page.list
+        pages = subject.page.list
 
         pages.should be_an_instance_of(ActionKitRest::Response::Wrapper)
 
@@ -53,7 +61,7 @@ describe ActionKitRest::Page do
       describe "success" do
         let(:status) { 200 }
         it "should return a single object" do
-          page = @actionkit.page.get(1)
+          page = subject.page.get(1)
           page.goal.should == 10
         end
       end
@@ -62,7 +70,7 @@ describe ActionKitRest::Page do
         let(:status) { 404 }
 
         it "should return nil" do
-          lambda{ @actionkit.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::NotFound)
+          lambda{ subject.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::NotFound)
         end
       end
       
@@ -71,7 +79,7 @@ describe ActionKitRest::Page do
         let(:body) { fixture('error.json') }
         
         it "should raise an ak validation response error" do
-          lambda{ @actionkit.page.get(1) }.should raise_exception(ActionKitRest::Response::ValidationError)
+          lambda{ subject.page.get(1) }.should raise_exception(ActionKitRest::Response::ValidationError)
         end  
       end
 
@@ -79,7 +87,7 @@ describe ActionKitRest::Page do
         let(:status) { 500 }
 
         it "should return nil" do
-          lambda{ @actionkit.page.get(1).should == nil }.should raise_exception
+          lambda{ subject.page.get(1).should == nil }.should raise_exception
         end
       end
     end

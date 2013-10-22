@@ -14,6 +14,12 @@ end
 
 ```
 
+With eventmachine:
+
+```ruby
+ak = ActionKitRest.new(host: 'roboticdogs.actionkit.com', username: 'name', password: 'pass', adapter: :em_synchrony)
+```
+
 This is very experimental still, but starting to be usable.
 
 ## Copyright

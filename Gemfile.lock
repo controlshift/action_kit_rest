@@ -3,6 +3,8 @@ PATH
   specs:
     action_kit_rest (0.1.1)
       action_kit_rest
+      em-http-request
+      em-synchrony
       vertebrae
 
 GEM
@@ -19,6 +21,7 @@ GEM
     builder (3.2.2)
     coderay (1.0.9)
     columnize (0.3.6)
+    cookiejar (0.3.0)
     crack (0.3.2)
     debugger (1.4.0)
       columnize (>= 0.3.1)
@@ -28,6 +31,17 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.1)
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    em-synchrony (1.0.3)
+      eventmachine (>= 1.0.0.beta.1)
+    eventmachine (1.0.3)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
@@ -51,6 +65,7 @@ GEM
       rspec (~> 2.11)
     hashie (2.0.5)
     highline (1.6.19)
+    http_parser.rb (0.5.3)
     httpauth (0.2.0)
     i18n (0.6.5)
     jeweler (1.8.7)
