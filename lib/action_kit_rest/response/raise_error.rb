@@ -10,7 +10,7 @@ module ActionKitRest
           elsif status_code == 404
             raise ActionKitRest::Response::NotFound.new(response[:url].to_s)
           else
-            raise Exception.new(error_message(response))
+            raise StandardError.new(error_message(response))
           end
         end
       end
@@ -20,6 +20,6 @@ module ActionKitRest
       end
     end
 
-    class NotFound < Exception ; end
+    class NotFound < StandardError ; end
   end # Response::RaiseError
 end
