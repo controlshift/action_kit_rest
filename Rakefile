@@ -22,10 +22,12 @@ Jeweler::Tasks.new do |gem|
   gem.license = "MIT"
   gem.summary = %Q{A wrapper for the ActionKit REST API}
   gem.description = %Q{Gem for interacting with the ActionKit API}
-  gem.email = "woodhull@gmail.com"
+  gem.email = "nathan@controlshiftlabs.com"
   gem.authors = ["Nathan Woodhull"]
-  # dependencies defined in Gemfile
   gem.add_dependency 'vertebrae'
+  gem.add_development_dependency 'eventmachine'
+  gem.add_development_dependency 'em-synchrony'
+  gem.add_development_dependency 'em-http-request'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
