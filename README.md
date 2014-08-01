@@ -2,6 +2,8 @@
 
 A ruby binding for the ActionKit REST API
 
+[![Build Status](https://travis-ci.org/controlshift/action_kit_rest.svg)](https://travis-ci.org/controlshift/action_kit_rest)
+
 ## Usage
 
 ```ruby
