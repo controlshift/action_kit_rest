@@ -24,10 +24,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Gem for interacting with the ActionKit API}
   gem.email = "nathan@controlshiftlabs.com"
   gem.authors = ["Nathan Woodhull"]
-  gem.add_dependency 'vertebrae'
-  gem.add_development_dependency 'eventmachine'
-  gem.add_development_dependency 'em-synchrony'
-  gem.add_development_dependency 'em-http-request'
+  # deps in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 

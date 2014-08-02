@@ -8,8 +8,8 @@ describe ActionKitRest::Response::Wrapper do
 
       wrapper = ActionKitRest::Response::Wrapper.new(response)
 
-      wrapper.object?.should be_true
-      wrapper.collection?.should be_false
+      wrapper.object?.should be_truthy
+      wrapper.collection?.should be_falsey
     end
 
     it "should be kind 'collection' for collections" do
@@ -18,8 +18,8 @@ describe ActionKitRest::Response::Wrapper do
 
       wrapper = ActionKitRest::Response::Wrapper.new(response)
 
-      wrapper.object?.should be_false
-      wrapper.collection?.should be_true
+      wrapper.object?.should be_falsey
+      wrapper.collection?.should be_truthy
     end
   end
 end

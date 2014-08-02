@@ -4,7 +4,7 @@ describe ActionKitRest::User do
   before(:each) do
     @actionkit = ActionKitRest.new(host: 'test.com')
 
-    logger = mock
+    logger = double
     logger.stub(:debug).and_return(true)
 
     ActionKitRest.stub(:logger).and_return(logger)

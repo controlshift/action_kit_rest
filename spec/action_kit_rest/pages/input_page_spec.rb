@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ActionKitRest::Pages::ImportPage do
   before(:each) do
-    logger = mock
+    logger = double
     logger.stub(:debug).and_return(true)
 
     ActionKitRest.stub(:logger).and_return(logger)
