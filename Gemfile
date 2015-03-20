@@ -5,7 +5,7 @@ group :development do
   gem "rspec"
   gem 'webmock'
   gem 'pry'
-  gem 'pry-debugger'
+  gem 'pry-byebug'
   gem "bundler"
   gem 'eventmachine'
   gem 'em-synchrony'

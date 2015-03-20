@@ -9,17 +9,13 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     builder (3.2.2)
+    byebug (4.0.3)
+      columnize (= 0.9.0)
     coderay (1.1.0)
-    columnize (0.8.9)
+    columnize (0.9.0)
     cookiejar (0.3.2)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
@@ -80,9 +76,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-debugger (0.2.3)
-      debugger (~> 1.3)
-      pry (>= 0.9.10, < 0.11.0)
+    pry-byebug (3.1.0)
+      byebug (~> 4.0)
+      pry (~> 0.10)
     rack (1.5.2)
     rake (10.3.2)
     rdoc (4.1.1)
@@ -123,7 +119,7 @@ DEPENDENCIES
   eventmachine
   jeweler (~> 2.0.0)
   pry
-  pry-debugger
+  pry-byebug
   rspec
   vertebrae
   webmock
