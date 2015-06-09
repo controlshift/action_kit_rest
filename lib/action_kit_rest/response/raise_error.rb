@@ -9,6 +9,8 @@ module ActionKitRest
             raise ActionKitRest::Response::ValidationError.new(url: response[:url].to_s, body: response[:body])
           elsif status_code == 404
             raise ActionKitRest::Response::NotFound.new(response[:url].to_s)
+          elsif status_code == 401
+            raise ActionKitRest::Response::Unauthorized.new(response[:url].to_s)  
           else
             raise StandardError.new(error_message(response))
           end
@@ -21,5 +23,6 @@ module ActionKitRest
     end
 
     class NotFound < StandardError ; end
-  end # Response::RaiseError
+    class Unauthorized < StandardError ; end
+  end
 end
