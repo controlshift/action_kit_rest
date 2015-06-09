@@ -14,7 +14,11 @@ module ActionKitRest
     def signup_page
       @signup_page ||= ActionKitRest::Pages::SignupPage.new(client: self)
     end
-
+    
+    def donation_page
+      @donation_page ||= ActionKitRest::Pages::DonationPage.new(client: self)
+    end
+      
     def action
       @action ||= ActionKitRest::Action.new(client: self)
     end
