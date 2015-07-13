@@ -18,9 +18,17 @@ module ActionKitRest
     def donation_page
       @donation_page ||= ActionKitRest::Pages::DonationPage.new(client: self)
     end
+
+    def unsubscribe_page
+      @unsubscribe_page ||= ActionKitRest::Pages::UnsubscribePage.new(client: self)
+    end
       
     def action
       @action ||= ActionKitRest::Action.new(client: self)
+    end
+
+    def unsubscribe_action
+      @action ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
     end
 
     def tag

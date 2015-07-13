@@ -22,7 +22,19 @@ With eventmachine:
 ak = ActionKitRest.new(host: 'roboticdogs.actionkit.com', username: 'name', password: 'pass', adapter: :em_synchrony)
 ```
 
-This is very experimental still, but starting to be usable.
+### Unsubscribe
+
+
+```ruby
+# First create a page
+page = ak.unsubscribe_page.create(title: "Unsubscribe from API", name: "api_unsubscribes")
+# page is now a page object
+puts "created page: #{page.id}"
+
+# create an unsubscribe action on the page we just created.
+unsub = ak.unsubscribe_action.create(email: 'foo@bar.com', page: 'api_unsubscribes')
+
+# unsub is now an action object with info about the unsub we just processed.
 
 ## Copyright
 

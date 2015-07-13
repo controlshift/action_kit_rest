@@ -87,7 +87,7 @@ describe ActionKitRest::Page do
         let(:status) { 500 }
 
         it "should return nil" do
-          lambda{ subject.page.get(1).should == nil }.should raise_exception
+          lambda{ subject.page.get(1).should == nil }.should raise_exception(StandardError)
         end
       end
     end

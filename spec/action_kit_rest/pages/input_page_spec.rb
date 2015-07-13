@@ -21,7 +21,7 @@ describe ActionKitRest::Pages::ImportPage do
       stub_post(request_path).with(body: request_body).to_return(:body => body, :status => status,
                                                                  :headers => {location: 'https://test.com/rest/v1/importpage/1093/', content_type: "application/json; charset=utf-8"})
 
-      stub_request(:get, "https://test.com/rest/v1/importpage/1093/").to_return(body: fixture('page/object.json'), status: '200', content_type: "application/json; charset=utf-8")
+      stub_request(:get, "https://test.com/rest/v1/importpage/1093/").to_return(body: fixture('page/object.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"})
     end
 
     describe ".create" do
@@ -42,7 +42,7 @@ describe ActionKitRest::Pages::ImportPage do
       stub_put(request_path).with(body: request_body).to_return(:body => body, :status => status,
                                                                  :headers => { content_type: "application/json; charset=utf-8"})
 
-      stub_request(:get, "https://test.com/rest/v1/importpage/1093/").to_return(body: fixture('page/object.json'), status: '200', content_type: "application/json; charset=utf-8")
+      stub_request(:get, "https://test.com/rest/v1/importpage/1093/").to_return(body: fixture('page/object.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"})
     end
 
     describe '.update' do
