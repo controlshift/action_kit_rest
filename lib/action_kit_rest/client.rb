@@ -43,5 +43,9 @@ module ActionKitRest
       @user ||= ActionKitRest::User.new(client: self)
     end
 
+    def event
+      @event ||= ActionKitRest::Event.new(client: self)
+    end
+
   end
 end
