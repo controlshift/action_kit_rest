@@ -28,7 +28,7 @@ module ActionKitRest
     end
 
     def unsubscribe_action
-      @action ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
+      @unsubscribe_action ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
     end
 
     def tag
