@@ -2,50 +2,27 @@ require 'action_kit_rest/api'
 
 module ActionKitRest
   class Client < API
+    attr_accessor :clients
 
-    def page
-      @page ||= ActionKitRest::Page.new(client: self)
-    end
-
-    def import_page
-      @import_page ||= ActionKitRest::Pages::ImportPage.new(client: self)
+    def initialize(params)
+      super(params)
+      self.clients = {}
     end
 
-    def signup_page
-      @signup_page ||= ActionKitRest::Pages::SignupPage.new(client: self)
-    end
-    
-    def donation_page
-      @donation_page ||= ActionKitRest::Pages::DonationPage.new(client: self)
-    end
-
-    def unsubscribe_page
-      @unsubscribe_page ||= ActionKitRest::Pages::UnsubscribePage.new(client: self)
-    end
-      
-    def action
-      @action ||= ActionKitRest::Action.new(client: self)
+    [:import, :signup, :donation, :unsubscribe].each do |page_type|
+      define_method "#{page_type}_page" do
+        clients["#{page_type}_page"] ||= ("ActionKitRest::Pages::#{page_type.to_s.classify}Page".constantize).new(client: self)
+      end
     end
 
     def unsubscribe_action
-      @unsubscribe_action ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
+      clients['unsubscribe_action'] ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
     end
 
-    def tag
-      @tag ||= ActionKitRest::Tag.new(client: self)
+    [:action, :page, :tag, :list, :user, :event, :language].each do |thing|
+      define_method thing do
+        clients[thing] ||= ("ActionKitRest::#{thing.to_s.classify}".constantize).new(client: self)
+      end
     end
-    
-    def list
-      @list ||= ActionKitRest::List.new(client: self)
-    end
-    
-    def user
-      @user ||= ActionKitRest::User.new(client: self)
-    end
-
-    def event
-      @event ||= ActionKitRest::Event.new(client: self)
-    end
-
   end
 end

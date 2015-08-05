@@ -22,6 +22,15 @@ With eventmachine:
 ak = ActionKitRest.new(host: 'roboticdogs.actionkit.com', username: 'name', password: 'pass', adapter: :em_synchrony)
 ```
 
+### Languages
+
+Get language by id and inspect it's iso code.
+
+```ruby
+language = ak.language.get '1'
+language.iso_code
+```
+
 ### Unsubscribe
 
 
