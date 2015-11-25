@@ -3,10 +3,10 @@ require 'spec_helper'
 describe ActionKitRest::Pages::ImportPage do
   before(:each) do
     logger = double
-    logger.stub(:debug).and_return(true)
+    allow(logger).to receive(:debug).and_return(true)
 
-    ActionKitRest.stub(:logger).and_return(logger)
-    Vertebrae::Base.stub(:logger).and_return(logger)
+    allow(ActionKitRest).to receive(:logger).and_return(logger)
+    allow(Vertebrae::Base).to receive(:logger).and_return(logger)
   end
 
   let(:actionkit) { ActionKitRest.new(host: 'test.com')  }
@@ -27,8 +27,7 @@ describe ActionKitRest::Pages::ImportPage do
     describe ".create" do
       it "should allow creation" do
         resp = actionkit.import_page.create(title: "Title", name: "name")
-        resp.title.should == 'Demand a Sustainable USDA'
-
+        expect(resp.title).to eq 'Demand a Sustainable USDA'
       end
     end
   end
@@ -48,7 +47,7 @@ describe ActionKitRest::Pages::ImportPage do
     describe '.update' do
       it 'should allow updates' do
         resp = actionkit.import_page.update('1093', title: "Title", name: "name")
-        resp.title.should == 'Demand a Sustainable USDA'
+        expect(resp.title).to eq 'Demand a Sustainable USDA'
       end
     end
   end
