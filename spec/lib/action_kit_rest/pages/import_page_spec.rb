@@ -1,13 +1,8 @@
 require 'spec_helper'
+require 'support/shared_contexts/stub_logger'
 
 describe ActionKitRest::Pages::ImportPage do
-  before(:each) do
-    logger = double
-    allow(logger).to receive(:debug).and_return(true)
-
-    allow(ActionKitRest).to receive(:logger).and_return(logger)
-    allow(Vertebrae::Base).to receive(:logger).and_return(logger)
-  end
+  include_context "stub_logger"
 
   let(:actionkit) { ActionKitRest.new(host: 'test.com')  }
   let(:status) { 200 }

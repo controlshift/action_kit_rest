@@ -1,6 +1,9 @@
 require 'spec_helper'
+require 'support/shared_contexts/stub_logger'
 
 describe ActionKitRest::Pages::EventCampaignPage do
+  include_context "stub_logger"
+
   describe 'create' do
     let(:actionkit) { ActionKitRest.new(host: 'test.com')  }
 
