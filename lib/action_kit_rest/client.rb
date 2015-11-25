@@ -9,7 +9,7 @@ module ActionKitRest
       self.clients = {}
     end
 
-    [:import, :signup, :donation, :unsubscribe].each do |page_type|
+    [:import, :signup, :donation, :unsubscribe, :event_campaign].each do |page_type|
       define_method "#{page_type}_page" do
         clients["#{page_type}_page"] ||= ("ActionKitRest::Pages::#{page_type.to_s.classify}Page".constantize).new(client: self)
       end
