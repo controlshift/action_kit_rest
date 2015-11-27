@@ -9,6 +9,8 @@ describe ActionKitRest::Pages::EventCampaignPage do
 
     let(:event_campaign_title) { "Climate Change Paris 2015" }
     let(:event_campaign_name) { "climate-change-paris-2015" }
+    let(:event_create_page_id) { '99' }
+    let(:event_signup_page_id) { '111' }
 
     before :each do
       stub_request(:post, 'https://test.com/rest/v1/campaign/')
@@ -20,11 +22,11 @@ describe ActionKitRest::Pages::EventCampaignPage do
 
       stub_request(:post, 'https://test.com/rest/v1/eventcreatepage/')
         .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-create\"}")
-        .to_return({status: '200', headers: {location: 'https://test.com/rest/v1/eventcreatepage/99/'}})
+        .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventcreatepage/#{event_create_page_id}/"}})
 
       stub_request(:post, 'https://test.com/rest/v1/eventsignuppage/')
         .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-signup\"}")
-        .to_return({status: '200', headers: {location: 'https://test.com/rest/v1/eventsignuppage/111/'}})
+        .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventsignuppage/#{event_signup_page_id}/"}})
     end
 
     it 'should create an event campaign' do
@@ -37,7 +39,9 @@ describe ActionKitRest::Pages::EventCampaignPage do
     end
 
     it 'should create associated event and signup create pages' do
-      actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015'})
+      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015'})
+      expect(resp.event_create_page_id).to eq event_create_page_id
+      expect(resp.event_signup_page_id).to eq event_signup_page_id
 
       expect(a_request(:post, 'https://test.com/rest/v1/eventcreatepage/')).to have_been_made
       expect(a_request(:post, 'https://test.com/rest/v1/eventsignuppage/')).to have_been_made
