@@ -19,11 +19,11 @@ describe ActionKitRest::Pages::EventCampaignPage do
         .to_return({body: fixture('page/campaign.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"}})
 
       stub_request(:post, 'https://test.com/rest/v1/eventcreatepage/')
-        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-create\"}")
+        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-create\",\"title\":\"Climate Change Paris 2015: event create\"}")
         .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventcreatepage/99/"}})
 
       stub_request(:post, 'https://test.com/rest/v1/eventsignuppage/')
-        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-signup\"}")
+        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-signup\",\"title\":\"Climate Change Paris 2015: event signup\"}")
         .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventsignuppage/111/"}})
     end
 

@@ -27,7 +27,8 @@ module ActionKitRest
       def event_create_page_params(event_campaign)
         {
           campaign: event_campaign['resource_uri'],
-          name: "#{event_campaign['name']}-event-create"
+          name: "#{event_campaign['name']}-event-create",
+          title: "#{event_campaign['title']}: event create"
         }
       end
 
@@ -41,7 +42,8 @@ module ActionKitRest
       def event_signup_page_params(event_campaign)
         {
           campaign: event_campaign['resource_uri'],
-          name: "#{event_campaign['name']}-event-signup"
+          name: "#{event_campaign['name']}-event-signup",
+          title: "#{event_campaign['title']}: event signup"
         }
       end
     end
