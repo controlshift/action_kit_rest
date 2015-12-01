@@ -19,16 +19,16 @@ describe ActionKitRest::Pages::EventCampaignPage do
         .to_return({body: fixture('page/campaign.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"}})
 
       stub_request(:post, 'https://test.com/rest/v1/eventcreatepage/')
-        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-create\",\"title\":\"Climate Change Paris 2015: event create\"}")
+        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-create\",\"title\":\"Climate Change Paris 2015: event create\",\"tags\":[\"/rest/v1/tag/1/\",\"/rest/v1/tag/5/\"]}")
         .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventcreatepage/99/"}})
 
       stub_request(:post, 'https://test.com/rest/v1/eventsignuppage/')
-        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-signup\",\"title\":\"Climate Change Paris 2015: event signup\"}")
+        .with(:body => "{\"campaign\":\"/rest/v1/campaign/88/\",\"name\":\"climate-change-paris-2015-event-signup\",\"title\":\"Climate Change Paris 2015: event signup\",\"tags\":[\"/rest/v1/tag/1/\",\"/rest/v1/tag/5/\"]}")
         .to_return({status: '200', headers: {location: "https://test.com/rest/v1/eventsignuppage/111/"}})
     end
 
     it 'should create an event campaign' do
-      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015'})
+      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015', event_pages_tags: ['/rest/v1/tag/1/', '/rest/v1/tag/5/']})
       expect(resp.title).to eq event_campaign_title
       expect(resp.name).to eq event_campaign_name
 
@@ -37,7 +37,7 @@ describe ActionKitRest::Pages::EventCampaignPage do
     end
 
     it 'should create associated event and signup create pages' do
-      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015'})
+      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015', event_pages_tags: ['/rest/v1/tag/1/', '/rest/v1/tag/5/']})
       expect(resp.event_create_page_name).to eq 'climate-change-paris-2015-event-create'
       expect(resp.event_signup_page_name).to eq 'climate-change-paris-2015-event-signup'
 
