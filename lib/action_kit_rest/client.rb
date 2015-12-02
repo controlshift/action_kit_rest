@@ -15,8 +15,10 @@ module ActionKitRest
       end
     end
 
-    def unsubscribe_action
-      clients['unsubscribe_action'] ||= ActionKitRest::Actions::UnsubscribeAction.new(client: self)
+    [:unsubscribe, :event_create].each do |action|
+      define_method "#{action}_action" do
+        clients["#{action}_action"] ||= ("ActionKitRest::Actions::#{action.to_s.classify}Action".constantize).new(client: self)
+      end
     end
 
     [:action, :page, :tag, :list, :user, :event, :language].each do |thing|
