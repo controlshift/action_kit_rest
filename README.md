@@ -44,6 +44,28 @@ puts "created page: #{page.id}"
 unsub = ak.unsubscribe_action.create(email: 'foo@bar.com', page: 'api_unsubscribes')
 
 # unsub is now an action object with info about the unsub we just processed.
+```
+
+### Event Campaign Page
+
+```ruby
+# Can send any of the attributes described at the schema (https://roboticdogs.actionkit.com/rest/v1/campaign/schema/) plus a collection of tag URIs to
+# apply to the event create and event signup pages
+event_campaign = ak.event_campaign_page.create(name: 'global-march-2015', title: 'Global March 2015', event_pages_tags: ["/rest/v1/tag/1/", "/rest/v1/tag/99/"])
+
+# The event_campaign object will include all the fields detailed on the schema plus the ID (as an integer, not as a URI) of the associated pages:
+# * event_create_page_name
+# * event_signup_page_name
+```
+
+### Event Create Action
+
+Use this action for retrieving the eventcreateaction details (see the schema at: https://roboticdogs.actionkit.com/rest/v1/eventcreateaction/schema/).
+**NOTE:** Cannot create actions through this resource, instead POST on /rest/v1/action/ with the page being an eventcreatepage for creating a new action of this type.
+
+### Event
+
+Use this object for retrieving and updating an existing event. For creating new events must POST an action on an eventcreatepage.
 
 ## Copyright
 
