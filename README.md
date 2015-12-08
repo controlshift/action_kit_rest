@@ -67,6 +67,10 @@ Use this action for retrieving the eventcreateaction details (see the schema at:
 
 Use this object for retrieving and updating an existing event. For creating new events must POST an action on an eventcreatepage.
 
+### Event Signup
+
+Use this object for retrieving and updating an event attendee. For creating new attendees must POST an action on an eventsignuppage.
+
 ## Copyright
 
 Copyright (c) 2013 ControlShift Ltd. See LICENSE.txt for
