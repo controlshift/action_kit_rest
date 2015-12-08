@@ -15,7 +15,7 @@ module ActionKitRest
       end
     end
 
-    [:unsubscribe, :event_create].each do |action|
+    [:unsubscribe, :event_create, :event_signup].each do |action|
       define_method "#{action}_action" do
         clients["#{action}_action"] ||= ("ActionKitRest::Actions::#{action.to_s.classify}Action".constantize).new(client: self)
       end

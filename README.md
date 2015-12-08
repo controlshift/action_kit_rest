@@ -67,6 +67,11 @@ Use this action for retrieving the eventcreateaction details (see the schema at:
 
 Use this object for retrieving and updating an existing event. For creating new events must POST an action on an eventcreatepage.
 
+### Event Signup Action
+
+Use this action for retrieving the eventsignup details (see the schema at: https://roboticdogs.actionkit.com/rest/v1/eventsignupaction/schema/).
+**NOTE:** Cannot create actions through this resource, instead POST on /rest/v1/action/ with the page being an eventsignuppage for creating a new action of this type.
+
 ### Event Signup
 
 Use this object for retrieving and updating an event attendee. For creating new attendees must POST an action on an eventsignuppage.
