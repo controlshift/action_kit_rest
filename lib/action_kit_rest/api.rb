@@ -1,10 +1,9 @@
 module ActionKitRest
   class API < Vertebrae::API
 
-    def request_with_wrapper( *args )
-      ActionKitRest::Response::Wrapper.new( request_without_wrapper( *args ) )
+    def request(*args)
+      ActionKitRest::Response::Wrapper.new( super(*args) )
     end
-    alias_method_chain :request, :wrapper
 
     def post_json_request(path, params)
       p = {}
