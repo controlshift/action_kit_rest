@@ -10,7 +10,16 @@ module ActionKitRest
           elsif status_code == 404
             raise ActionKitRest::Response::NotFound.new(response[:url].to_s)
           elsif status_code == 401
-            raise ActionKitRest::Response::Unauthorized.new(response[:url].to_s)  
+            raise ActionKitRest::Response::Unauthorized.new(response[:url].to_s)
+          elsif status_code == 500 && response[:body] =~ /\"error\"/
+            error_hsh = JSON.parse(response[:body])
+            error_message = error_hsh['error']
+
+            if error_message == 'Sorry, this request could not be processed. Please try again later.'
+              raise ActionKitRest::Response::TryAgainLater.new(error_message(response))
+            else
+              raise StandardError.new(error_message(response))
+            end
           else
             raise StandardError.new(error_message(response))
           end
@@ -22,6 +31,7 @@ module ActionKitRest
       end
     end
 
+    class TryAgainLater < StandardError ; end
     class NotFound < StandardError ; end
     class Unauthorized < StandardError ; end
   end

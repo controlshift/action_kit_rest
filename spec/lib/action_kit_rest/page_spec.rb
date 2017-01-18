@@ -90,6 +90,14 @@ describe ActionKitRest::Page do
           lambda{ subject.page.get(1).should == nil }.should raise_exception(StandardError)
         end
       end
+
+      describe 'try again' do
+        let(:status) { 500 }
+        let(:body) { '{"error": "Sorry, this request could not be processed. Please try again later."}' }
+        it "should return nil" do
+          lambda{ subject.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::TryAgainLater)
+        end
+      end
     end
   end
 end
