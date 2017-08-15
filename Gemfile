@@ -4,8 +4,7 @@ gem 'vertebrae'
 group :development do
   gem "rspec"
   gem 'webmock'
-  gem 'pry'
-  gem 'pry-byebug'
+  gem 'byebug'
   gem "bundler"
   gem 'eventmachine'
   gem 'em-synchrony'
