@@ -12,21 +12,21 @@ end
 require 'rake'
 require './lib/action_kit_rest/version.rb'
 
-require 'jeweler'
 
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+require 'juwelier'
+Juwelier::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "action_kit_rest"
   gem.version = ActionKitRest::VERSION::STRING
   gem.homepage = "http://github.com/controlshift/action_kit_rest"
   gem.license = "MIT"
   gem.summary = %Q{A wrapper for the ActionKit REST API}
   gem.description = %Q{Gem for interacting with the ActionKit API}
-  gem.email = "nathan@controlshiftlabs.com"
-  gem.authors = ["Nathan Woodhull"]
-  # deps in Gemfile
+  gem.email = "systems@controlshiftlabs.com"
+  gem.authors = ["Nathan Woodhull", 'Diego Marcet', 'Jacinda Moore']
+  # dependencies defined in Gemfile
 end
-Jeweler::RubygemsDotOrgTasks.new
+Juwelier::RubygemsDotOrgTasks.new
 
 
 require 'rspec/core/rake_task'
