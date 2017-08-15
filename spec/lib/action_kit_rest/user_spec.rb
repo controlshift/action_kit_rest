@@ -21,11 +21,25 @@ describe ActionKitRest::User do
     end
 
     describe ".get" do
-      let(:body) { fixture('user/object.json') }
       let(:status) { 200 }
 
-      it 'should return a user object' do
-        @actionkit.user.get(1).email.should == 'walkers@wawd.com'
+      context 'without phones' do
+        let(:body) { fixture('user/object_without_phones.json') }
+
+        it 'should return a user object' do
+          expect(@actionkit.user.get(1).email).to eq 'walkers@wawd.com'
+        end
+      end
+
+      context 'with phones' do
+        let(:body) { fixture('user/object_with_phones.json') }
+        let(:phone_body) { fixture('phone/object.json') }
+
+        it 'should include phones' do
+          stub_get('phone/?user=1').to_return(:body => phone_body, :status => 200)
+          expect(@actionkit.user.get(1).phones.count).to eq 3
+          expect(@actionkit.user.get(1).phones.map(&:phone)).to match_array(['7755555555', '7755555577', '310-310-3310'])
+        end
       end
     end
 
