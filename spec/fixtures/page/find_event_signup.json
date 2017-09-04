@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "limit": 20,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total_count": 1
+  },
+  "objects": [
+    {
+      "actions": "/rest/v1/eventsignupaction/?page=819",
+      "allow_multiple_responses": true,
+      "campaign": "/rest/v1/campaign/88/",
+      "created_at": "2017-09-01T14:49:50",
+      "eventsignupform": null,
+      "fields": {},
+      "followup": null,
+      "goal": null,
+      "goal_type": "actions",
+      "hidden": false,
+      "hosted_with": "/rest/v1/hostingplatform/1/",
+      "id": 819,
+      "language": "/rest/v1/language/100/",
+      "list": "/rest/v1/list/66/",
+      "multilingual_campaign": null,
+      "name": "climate-change-paris-2015-event-signup",
+      "never_spam_check": false,
+      "notes": "",
+      "real_actions": true,
+      "recognize": "once",
+      "required_fields": [],
+      "resource_uri": "/rest/v1/eventsignuppage/819/",
+      "status": "active",
+      "tags": [],
+      "title": "Climate Change Paris 2015: event signup",
+      "type": "EventSignup",
+      "updated_at": "2017-09-01T14:49:50",
+      "url": ""
+    }
+  ]
+}

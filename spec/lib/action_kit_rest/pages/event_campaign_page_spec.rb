@@ -45,4 +45,28 @@ describe ActionKitRest::Pages::EventCampaignPage do
       expect(a_request(:post, 'https://test.com/rest/v1/eventsignuppage/')).to have_been_made
     end
   end
+
+  describe 'find' do
+    let(:actionkit) { ActionKitRest.new(host: 'test.com')  }
+
+    let(:event_campaign_title) { "Climate Change Paris 2015" }
+    let(:event_campaign_name) { "climate-change-paris-2015" }
+
+    before :each do
+      stub_request(:get, 'https://test.com/rest/v1/campaign/?name=climate-change-paris-2015')
+        .to_return(body: fixture('page/find_campaign.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"})
+      stub_request(:get, "https://test.com/rest/v1/eventcreatepage/?name=climate-change-paris-2015-event-create")
+        .to_return(body: fixture('page/find_event_create.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"})
+      stub_request(:get, "https://test.com/rest/v1/eventsignuppage/?name=climate-change-paris-2015-event-signup")
+        .to_return(body: fixture('page/find_event_signup.json'), status: '200', headers: {content_type: "application/json; charset=utf-8"})
+    end
+
+    it 'should retrieve event campaign by name' do
+      resp = actionkit.event_campaign_page.find(event_campaign_name)
+
+      expect(resp.name).to eq event_campaign_name
+      expect(resp.event_create_page_name).to eq 'climate-change-paris-2015-event-create'
+      expect(resp.event_signup_page_name).to eq 'climate-change-paris-2015-event-signup'
+    end
+  end
 end

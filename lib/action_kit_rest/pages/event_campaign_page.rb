@@ -16,7 +16,28 @@ module ActionKitRest
         event_campaign
       end
 
+      def find(name)
+        event_campaign = super
+        return unless event_campaign.present?
+
+        # Aggregate EventCreatePage and EventSignupPage
+        event_campaign['event_create_page_name'] = get_event_create_page(event_campaign)
+        event_campaign['event_signup_page_name'] = get_event_signup_page(event_campaign)
+
+        event_campaign
+      end
+
       private
+
+      def get_event_create_page(event_campaign)
+        response = client.get_request('eventcreatepage/', name: "#{event_campaign.name}-event-create")
+        response.obj.try(:first).try(:name)
+      end
+
+      def get_event_signup_page(event_campaign)
+        response = client.get_request('eventsignuppage/', name: "#{event_campaign.name}-event-signup")
+        response.obj.try(:first).try(:name)
+      end
 
       def create_event_create_page(event_campaign, tags)
         params = event_create_page_params(event_campaign, tags)
