@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Nathan Woodhull".freeze, "Diego Marcet".freeze, "Jacinda Moore".freeze]
-  s.date = "2017-08-15"
+  s.date = "2017-09-04"
   s.description = "Gem for interacting with the ActionKit API".freeze
   s.email = "systems@controlshiftlabs.com".freeze
   s.extra_rdoc_files = [
@@ -62,6 +62,9 @@ Gem::Specification.new do |s|
     "spec/fixtures/error.json",
     "spec/fixtures/page/campaign.json",
     "spec/fixtures/page/collection.json",
+    "spec/fixtures/page/find_campaign.json",
+    "spec/fixtures/page/find_event_create.json",
+    "spec/fixtures/page/find_event_signup.json",
     "spec/fixtures/page/object.json",
     "spec/fixtures/phone/object.json",
     "spec/fixtures/user/object_with_phones.json",
