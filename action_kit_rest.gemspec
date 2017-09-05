@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
-    "VERSION",
     "action_kit_rest.gemspec",
     "lib/action_kit_rest.rb",
     "lib/action_kit_rest/action.rb",
