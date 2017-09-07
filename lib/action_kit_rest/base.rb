@@ -6,7 +6,7 @@ module ActionKitRest
     end
 
     def get(id)
-      client.get_request("#{normalized_base_path}#{id}/")
+      client.get_request("#{normalized_base_path}#{url_escape(id)}/")
     end
 
     def create(params)
@@ -16,7 +16,7 @@ module ActionKitRest
     end
 
     def update(id, params)
-      client.put_json_request("#{normalized_base_path}#{id}/", params)
+      client.put_json_request("#{normalized_base_path}#{url_escape(id)}/", params)
       get(id)
     end
 
@@ -25,6 +25,10 @@ module ActionKitRest
     end
 
     private
+
+    def url_escape(string)
+      CGI.escape(string.to_s)
+    end
 
     def extract_id_from_response(resp)
       extract_id_from_location(resp.response.headers["location"])
