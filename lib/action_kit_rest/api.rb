@@ -28,7 +28,7 @@ module ActionKitRest
     def default_options
       {
         user_agent: 'ActionKitRestGem',
-        prefix: '/rest/v1/',
+        prefix: '/rest/v1',
         content_type: 'application/json; charset=utf-8'
       }
     end

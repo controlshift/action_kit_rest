@@ -37,8 +37,7 @@ def stub_put(path)
 end
 
 def stub_action_kit_request(method, path)
-  prefix = ActionKitRest.new.connection.configuration.prefix.to_s
-  stub_request(method, 'https://test.com' + prefix + path)
+  stub_request(method, 'https://test.com/rest/v1/' + path)
 end
 
 def fixture_path
