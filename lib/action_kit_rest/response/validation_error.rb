@@ -13,7 +13,9 @@ module ActionKitRest
       def to_s
         "#{super()} \n url: #{url} \n body: #{body} \n errors: #{errors}"
       end
-      
+    end
+
+    class InvalidAkidError < ValidationError
     end
   end
 end
