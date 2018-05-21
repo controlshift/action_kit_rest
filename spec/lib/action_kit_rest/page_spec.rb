@@ -83,6 +83,15 @@ describe ActionKitRest::Page do
         end  
       end
 
+      describe 'mailing ID error' do
+        let(:status) { 400 }
+        let(:body) { '{"errors": {"mailing_id": ["Unable to associate this mailing ID with account."]}}' }
+
+        it "should raise an Invalid AKID response error" do
+          lambda{ subject.page.get(1) }.should raise_exception(ActionKitRest::Response::InvalidAkidError)
+        end
+      end
+
       describe "an error" do
         let(:status) { 500 }
 
