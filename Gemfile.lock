@@ -75,7 +75,7 @@ GEM
       rack (>= 1.2, < 3)
     psych (3.0.2)
     public_suffix (3.0.2)
-    rack (2.0.4)
+    rack (2.0.6)
     rake (12.3.1)
     rdoc (6.0.3)
     rspec (3.7.0)
@@ -121,4 +121,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
