@@ -1,14 +1,15 @@
 source "http://rubygems.org"
-gem 'vertebrae'
+
+gem 'vertebrae', '~> 0.4.3'
 
 group :development do
-  gem "rspec"
-  gem 'webmock'
-  gem 'byebug'
-  gem "bundler"
-  gem 'eventmachine'
-  gem 'em-synchrony'
-  gem 'em-http-request'
-  gem "juwelier"
+  gem 'rspec', '~> 3.7'
+  gem 'webmock', '~> 3.3'
+  gem 'byebug', '>= 10.0.2', '<11.0'
+  gem 'bundler', '>= 1.16.2', '<2.0'
+  gem 'eventmachine', '>=1.2.5', '<2.0'
+  gem 'em-synchrony', '>=1.0.6', '<2.0'
+  gem 'em-http-request', '>=1.1.5', '<2.0'
+  gem 'juwelier', '>=2.4.9', '<3.0'
 end
 
