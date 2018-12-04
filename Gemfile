@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'vertebrae', '~> 0.4.3'
+gem 'vertebrae', '~> 0.5.0'
 
 group :development do
   gem 'rspec', '~> 3.7'
