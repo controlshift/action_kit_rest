@@ -37,7 +37,9 @@ module ActionKitRest
       connection.stack do |builder|
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
-        builder.use Vertebrae::Request::BasicAuth, connection.configuration.authentication if connection.configuration.authenticated?
+        if connection.configuration.authenticated?
+          builder.use Faraday::Request::BasicAuthentication, connection.configuration.username, connection.configuration.password
+        end
 
         builder.use Faraday::Response::Logger if ENV['DEBUG']
 
