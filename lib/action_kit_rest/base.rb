@@ -10,14 +10,15 @@ module ActionKitRest
     end
 
     def create(params)
-      params.each { |k, v| params[k] = strip_unsupported_characters(v) }
-      resp = client.post_json_request(normalized_base_path, params)
+      cleaned_params = clean_params(params)
+      resp = client.post_json_request(normalized_base_path, cleaned_params)
       id = extract_id_from_response(resp)
       get(id)
     end
 
     def update(id, params)
-      client.put_json_request("#{normalized_base_path}#{url_escape(id)}/", params)
+      cleaned_params = clean_params(params)
+      client.put_json_request("#{normalized_base_path}#{url_escape(id)}/", cleaned_params)
       get(id)
     end
 
@@ -40,8 +41,18 @@ module ActionKitRest
     end
 
     def strip_unsupported_characters(string)
-      # ActionKit only supports three-byte UTF-8 for many fields.
       string.each_char.select{|c| c.bytes.count <= 3 }.join('')
+    end
+
+    # ActionKit only supports three-byte UTF-8 for many fields.
+    def clean_params(params)
+      cleaned_params = {}
+      params.each do |k, v|
+        if v.is_a? String
+          cleaned_params[k] = strip_unsupported_characters(v)
+        end
+      end
+      cleaned_params
     end
   end
 end

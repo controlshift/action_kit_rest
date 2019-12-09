@@ -36,6 +36,15 @@ describe ActionKitRest::Pages::EventCampaignPage do
       expect(a_request(:get, 'https://test.com/rest/v1/campaign/88/')).to have_been_made
     end
 
+    it 'should handle not-allowed characters when creating an event campaign' do
+      resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015🌿', name: 'climate-change-paris-2015', event_pages_tags: ['/rest/v1/tag/1/', '/rest/v1/tag/5/']})
+      expect(resp.title).to eq event_campaign_title
+      expect(resp.name).to eq event_campaign_name
+
+      expect(a_request(:post, 'https://test.com/rest/v1/campaign/')).to have_been_made
+      expect(a_request(:get, 'https://test.com/rest/v1/campaign/88/')).to have_been_made
+    end
+
     it 'should create associated event and signup create pages' do
       resp = actionkit.event_campaign_page.create({title: 'Climate Change Paris 2015', name: 'climate-change-paris-2015', event_pages_tags: ['/rest/v1/tag/1/', '/rest/v1/tag/5/']})
       expect(resp.event_create_page_name).to eq 'climate-change-paris-2015-event-create'
