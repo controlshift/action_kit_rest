@@ -24,6 +24,11 @@ describe ActionKitRest::Pages::ImportPage do
         resp = actionkit.import_page.create(title: "Title", name: "name")
         expect(resp.title).to eq 'Demand a Sustainable USDA'
       end
+
+      it "should strip not-allowed characters from params" do
+        resp = actionkit.import_page.create(title: "Title😭", name: "name🦷")
+        expect(resp.title).to eq 'Demand a Sustainable USDA'
+      end
     end
   end
 

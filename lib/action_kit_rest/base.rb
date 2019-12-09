@@ -10,6 +10,7 @@ module ActionKitRest
     end
 
     def create(params)
+      params.each { |k, v| params[k] = strip_unsupported_characters(v) }
       resp = client.post_json_request(normalized_base_path, params)
       id = extract_id_from_response(resp)
       get(id)
@@ -36,6 +37,11 @@ module ActionKitRest
 
     def extract_id_from_location(location)
       location.scan(/\/(\d+)\/$/).first.first
+    end
+
+    def strip_unsupported_characters(string)
+      # ActionKit only supports three-byte UTF-8 for many fields.
+      string.each_char.select{|c| c.bytes.count <= 3 }.join('')
     end
   end
 end
