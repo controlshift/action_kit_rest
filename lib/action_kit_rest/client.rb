@@ -21,7 +21,7 @@ module ActionKitRest
       end
     end
 
-    [:action, :page, :tag, :list, :user, :phone, :event, :language, :event_signup].each do |thing|
+    [:action, :page, :tag, :list, :user, :phone, :event, :language, :event_signup, :allowed_user_field].each do |thing|
       define_method thing do
         clients[thing] ||= ("ActionKitRest::#{thing.to_s.classify}".constantize).new(client: self)
       end
