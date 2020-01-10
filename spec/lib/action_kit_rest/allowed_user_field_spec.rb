@@ -29,4 +29,14 @@ describe ActionKitRest::AllowedUserField do
       end
     end
   end
+
+  describe '#find' do
+    let(:request_path) { 'alloweduserfield/?name=age' }
+    let(:response_body) { fixture('allowed_user_field/list_filtered.json') }
+
+    it 'should return a single object' do
+      field = subject.allowed_user_field.find('age')
+      expect(field.field_type).to eq 'integer'
+    end
+  end
 end
