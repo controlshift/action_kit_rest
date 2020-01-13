@@ -14,7 +14,7 @@ module ActionKitRest
     # We must override this, because the paths for allowed user fields use the name,
     # not a numerical ID.
     def extract_id_from_response(resp)
-      location.split('/').last
+      resp.response.headers["location"].split('/').last
     end
   end
 end

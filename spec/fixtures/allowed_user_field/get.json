@@ -1,0 +1,19 @@
+{
+  "allow_multiple": false,
+  "always_show": false,
+  "choices": [],
+  "created_at": "2016-10-19T01:39:35",
+  "description": "",
+  "display_name": "Foo",
+  "field_choices": "",
+  "field_default": "",
+  "field_length": null,
+  "field_regex": "",
+  "field_type": "string",
+  "hidden": false,
+  "name": "foo",
+  "order_index": 0,
+  "required": false,
+  "resource_uri": "/rest/v1/alloweduserfield/age/",
+  "updated_at": "2016-10-19T01:39:35"
+}
