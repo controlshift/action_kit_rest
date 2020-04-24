@@ -11,7 +11,14 @@ module ActionKitRest
       end
 
       def to_s
-        "#{super()} \n url: #{url} \n body: #{body} \n errors: #{errors}"
+        begin
+          "#{super()} \n url: #{url} \n body: #{body} \n errors: #{errors}"
+        rescue Encoding::CompatibilityError
+          # Something went gravely wrong trying to construct the error message, so give up on the extra info
+          # and just raise the name of the exception.
+          # This will let us at least raise with a backtrace.
+          super
+        end
       end
     end
 
