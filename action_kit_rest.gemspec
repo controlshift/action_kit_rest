@@ -89,7 +89,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/controlshift/action_kit_rest".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.0.8".freeze
+  s.rubygems_version = "3.0.4".freeze
   s.summary = "A wrapper for the ActionKit REST API".freeze
 
   if s.respond_to? :specification_version then
