@@ -5,7 +5,7 @@ gem 'vertebrae', '> 0.5.0'
 group :development do
   gem 'rspec', '~> 3.7'
   gem 'webmock', '~> 3.3'
-  gem 'byebug', '>= 10.0.2', '<11.0'
+  gem 'byebug'
   gem 'bundler', '>= 2.0', '<3.0'
   gem 'eventmachine', '>=1.2.5', '<2.0'
   gem 'em-synchrony', '>=1.0.6', '<2.0'
