@@ -41,7 +41,7 @@ module ActionKitRest
 
       def create_event_create_page(event_campaign, tags)
         params = event_create_page_params(event_campaign, tags)
-        response = client.post_json_request('eventcreatepage/', params)
+        _response = client.post_json_request('eventcreatepage/', params)
 
         params[:name]
       end
@@ -57,7 +57,7 @@ module ActionKitRest
 
       def create_event_signup_page(event_campaign, tags)
         params = event_signup_page_params(event_campaign, tags)
-        response = client.post_json_request('eventsignuppage/', params)
+        _response = client.post_json_request('eventsignuppage/', params)
 
         params[:name]
       end

@@ -7,8 +7,8 @@ describe ActionKitRest::Response::Collection  do
 
   describe 'initialization' do
     it 'should set meta and objects' do
-      subject.meta.should == meta
-      subject.objects.should == objects
+      expect(subject.meta).to eq(meta)
+      expect(subject.objects).to eq(objects)
     end
   end
 
@@ -18,7 +18,7 @@ describe ActionKitRest::Response::Collection  do
     let(:objects) { [ item1, item2 ] }
 
     it "should return all collection items" do
-      subject.count.should == 2
+      expect(subject.count).to eq(2)
       subject.any? { |i| i == item1 }
       subject.any? { |i| i == item2 }
     end
