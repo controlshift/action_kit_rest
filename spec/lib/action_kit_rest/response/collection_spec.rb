@@ -19,8 +19,8 @@ describe ActionKitRest::Response::Collection  do
 
     it "should return all collection items" do
       expect(subject.count).to eq(2)
-      subject.any? { |i| i == item1 }
-      subject.any? { |i| i == item2 }
+      expect(subject.any? { |i| i == item1 }).to be_truthy
+      expect(subject.any? { |i| i == item2 }).to be_truthy
     end
   end
 end
