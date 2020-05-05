@@ -1,3 +1,4 @@
 language: ruby
 rvm:
-  - "2.3.4"
+  - "2.6.6"
+script: ./ci_build.sh
