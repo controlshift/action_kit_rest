@@ -11,5 +11,6 @@ group :development do
   gem 'em-synchrony', '>=1.0.6', '<2.0'
   gem 'em-http-request', '>=1.1.5', '<2.0'
   gem 'juwelier', '>=2.4.9', '<3.0'
+  gem 'rubocop'
 end
 
