@@ -17,7 +17,7 @@ describe ActionKitRest::Response::Collection  do
     let(:item2) { double }
     let(:objects) { [ item1, item2 ] }
 
-    it "should return all collection items" do
+    it 'should return all collection items' do
       expect(subject.count).to eq(2)
       expect(subject.any? { |i| i == item1 }).to be_truthy
       expect(subject.any? { |i| i == item2 }).to be_truthy
