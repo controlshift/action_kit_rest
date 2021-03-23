@@ -14,7 +14,6 @@ require './lib/action_kit_rest/version'
 
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = 'action_kit_rest'
   gem.version = ActionKitRest::VERSION::STRING
   gem.homepage = 'http://github.com/controlshift/action_kit_rest'
@@ -22,7 +21,7 @@ Juwelier::Tasks.new do |gem|
   gem.summary = %(A wrapper for the ActionKit REST API)
   gem.description = %(Gem for interacting with the ActionKit API)
   gem.email = 'systems@controlshiftlabs.com'
-  gem.authors = ['Nathan Woodhull', 'Diego Marcet', 'Jacinda Moore']
+  gem.authors = ['Nathan Woodhull', 'Diego Marcet', 'Grey Moore']
   # dependencies defined in Gemfile
 end
 Juwelier::RubygemsDotOrgTasks.new
