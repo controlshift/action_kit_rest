@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'webmock/rspec'
 
@@ -16,11 +18,11 @@ RSpec.configure do |config|
   end
 
   config.mock_with :rspec do |mocks|
-    mocks.syntax = [:should, :expect]
+    mocks.syntax = %i[should expect]
   end
 
   config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
 end
 
@@ -37,11 +39,11 @@ def stub_put(path)
 end
 
 def stub_action_kit_request(method, path)
-  stub_request(method, 'https://test.com/rest/v1/' + path)
+  stub_request(method, "https://test.com/rest/v1/#{path}")
 end
 
 def fixture_path
-  File.expand_path("../fixtures", __FILE__)
+  File.expand_path('fixtures', __dir__)
 end
 
 def fixture(file)

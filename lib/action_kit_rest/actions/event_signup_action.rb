@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   module Actions
     class EventSignupAction < Action
@@ -9,8 +11,9 @@ module ActionKitRest
         ak_event_signup_action = super
 
         # Aggregate fields parsed from referrenced entities' URI
-        ak_event_signup_action.obj['event_signup_id'] = ak_event_signup_action.signup.match(/\/rest\/v1\/eventsignup\/(\d*)\//)[1]
-        ak_event_signup_action.obj['user_id'] = ak_event_signup_action.user.match(/\/rest\/v1\/user\/(\d*)\//)[1]
+        ak_event_signup_action.obj['event_signup_id'] =
+          ak_event_signup_action.signup.match(%r{/rest/v1/eventsignup/(\d*)/})[1]
+        ak_event_signup_action.obj['user_id'] = ak_event_signup_action.user.match(%r{/rest/v1/user/(\d*)/})[1]
 
         ak_event_signup_action
       end

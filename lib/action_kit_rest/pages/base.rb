@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   module Pages
     class Base < ActionKitRest::Base
@@ -6,15 +8,12 @@ module ActionKitRest
         response = list(name: name)
         response.obj.first
       end
-      
+
       def find_or_create(params)
         page = find(params[:name])
-        if page.blank?
-          page = create(params)
-        end
+        page = create(params) if page.blank?
         page
       end
     end
   end
 end
-

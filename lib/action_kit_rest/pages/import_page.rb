@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   module Pages
     class ImportPage < ActionKitRest::Pages::Base

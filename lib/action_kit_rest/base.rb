@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   class Base < Vertebrae::Model
-
     def list(filters = {})
       client.get_request(normalized_base_path, filters)
     end
@@ -31,11 +32,11 @@ module ActionKitRest
     end
 
     def extract_id_from_response(resp)
-      extract_id_from_location(resp.response.headers["location"])
+      extract_id_from_location(resp.response.headers['location'])
     end
 
     def extract_id_from_location(location)
-      location.scan(/\/(\d+)\/$/).first.first
+      location.scan(%r{/(\d+)/$}).first.first
     end
   end
 end

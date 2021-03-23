@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   class API < Vertebrae::API
-
     def request(*args)
-      ActionKitRest::Response::Wrapper.new( super(*args) )
+      ActionKitRest::Response::Wrapper.new(super(*args))
     end
 
     def post_json_request(path, params)
@@ -18,10 +19,10 @@ module ActionKitRest
     end
 
     def extract_data_from_params(params) # :nodoc:
-      if params.has_key?('data') && params['data'].present?
-        return params['data']
+      if params.key?('data') && params['data'].present?
+        params['data']
       else
-        return params
+        params
       end
     end
 
@@ -38,7 +39,8 @@ module ActionKitRest
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
         if connection.configuration.authenticated?
-          builder.use Faraday::Request::BasicAuthentication, connection.configuration.username, connection.configuration.password
+          builder.use Faraday::Request::BasicAuthentication, connection.configuration.username,
+                      connection.configuration.password
         end
 
         builder.use Faraday::Response::Logger if ENV['DEBUG']
@@ -46,7 +48,7 @@ module ActionKitRest
         builder.use FaradayMiddleware::Mashify
         builder.use FaradayMiddleware::ParseJson
 
-        builder.use  ActionKitRest::Response::RaiseError
+        builder.use ActionKitRest::Response::RaiseError
         builder.adapter connection.configuration.adapter
       end
     end

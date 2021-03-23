@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe ActionKitRest::Page do
@@ -16,7 +18,7 @@ describe ActionKitRest::Page do
       subject.connection.configuration.host.should == 'test.com'
     end
 
-    it "should have a client" do
+    it 'should have a client' do
       subject.page.client.should_not be_nil
     end
 
@@ -29,82 +31,80 @@ describe ActionKitRest::Page do
     end
   end
 
-
-  describe "retrieval" do
+  describe 'retrieval' do
     before(:each) do
-      stub_get(request_path).to_return(:body => body, :status => status,
-                                       :headers => {:content_type => "application/json; charset=utf-8"})
+      stub_get(request_path).to_return(body: body, status: status,
+                                       headers: { content_type: 'application/json; charset=utf-8' })
     end
 
-    describe ".list" do
+    describe '.list' do
       let(:status) { 200 }
       let(:body) { fixture('page/collection.json') }
       let(:request_path) { 'page/' }
 
-      it "should allow listing the objects" do
+      it 'should allow listing the objects' do
         pages = subject.page.list
 
         pages.should be_an_instance_of(ActionKitRest::Response::Wrapper)
 
-        pages.each do | obj |
+        pages.each do |obj|
           obj.should be_an_instance_of(Hashie::Mash)
           obj.should respond_to(:goal)
         end
       end
     end
 
-    describe ".page" do
-
+    describe '.page' do
       let(:body) { fixture('page/object.json') }
       let(:request_path) { 'page/1/' }
 
-      describe "success" do
+      describe 'success' do
         let(:status) { 200 }
-        it "should return a single object" do
+        it 'should return a single object' do
           page = subject.page.get(1)
           page.goal.should == 10
         end
       end
 
-      describe "not found" do
+      describe 'not found' do
         let(:status) { 404 }
 
-        it "should return nil" do
-          lambda{ subject.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::NotFound)
+        it 'should return nil' do
+          -> { subject.page.get(1).should.nil? }.should raise_exception(ActionKitRest::Response::NotFound)
         end
       end
-      
-      describe "error" do
+
+      describe 'error' do
         let(:status) { 400 }
         let(:body) { fixture('error.json') }
-        
-        it "should raise an ak validation response error" do
-          lambda{ subject.page.get(1) }.should raise_exception(ActionKitRest::Response::ValidationError)
-        end  
+
+        it 'should raise an ak validation response error' do
+          -> { subject.page.get(1) }.should raise_exception(ActionKitRest::Response::ValidationError)
+        end
       end
 
       describe 'mailing ID error' do
         let(:status) { 400 }
         let(:body) { '{"errors": {"mailing_id": ["Unable to associate this mailing ID with account."]}}' }
 
-        it "should raise an Invalid AKID response error" do
-          lambda{ subject.page.get(1) }.should raise_exception(ActionKitRest::Response::InvalidAkidError)
+        it 'should raise an Invalid AKID response error' do
+          -> { subject.page.get(1) }.should raise_exception(ActionKitRest::Response::InvalidAkidError)
         end
       end
 
-      describe "an error" do
+      describe 'an error' do
         let(:status) { 500 }
 
-        it "should return nil" do
-          lambda{ subject.page.get(1).should == nil }.should raise_exception(StandardError)
+        it 'should return nil' do
+          -> { subject.page.get(1).should.nil? }.should raise_exception(StandardError)
         end
       end
 
       describe 'try again' do
         let(:status) { 500 }
         let(:body) { '{"error": "Sorry, this request could not be processed. Please try again later."}' }
-        it "should return nil" do
-          lambda{ subject.page.get(1).should == nil }.should raise_exception(ActionKitRest::Response::TryAgainLater)
+        it 'should return nil' do
+          -> { subject.page.get(1).should.nil? }.should raise_exception(ActionKitRest::Response::TryAgainLater)
         end
       end
     end

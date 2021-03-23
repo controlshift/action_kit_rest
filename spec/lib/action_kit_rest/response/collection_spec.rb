@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe ActionKitRest::Response::Collection  do
-  let(:meta) { double() }
-  let(:objects) { double() }
+describe ActionKitRest::Response::Collection do
+  let(:meta) { double }
+  let(:objects) { double }
   subject { ActionKitRest::Response::Collection.new(meta, objects) }
 
   describe 'initialization' do
@@ -15,7 +17,7 @@ describe ActionKitRest::Response::Collection  do
   describe 'each' do
     let(:item1) { double }
     let(:item2) { double }
-    let(:objects) { [ item1, item2 ] }
+    let(:objects) { [item1, item2] }
 
     it 'should return all collection items' do
       expect(subject.count).to eq(2)

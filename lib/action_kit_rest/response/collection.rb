@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A class responsible for proxing to faraday response &
 # or a pagination collection.
 module ActionKitRest
@@ -5,9 +7,7 @@ module ActionKitRest
     class Collection
       include Enumerable
 
-      attr_reader :meta
-      attr_reader :objects
-
+      attr_reader :meta, :objects
 
       def initialize(meta, objects)
         @meta = meta
@@ -15,7 +15,7 @@ module ActionKitRest
       end
 
       def each(&block)
-        # todo handle pagination somehow!
+        # TODO: handle pagination somehow!
         objects.each do |o|
           block.call(o)
         end

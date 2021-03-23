@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   class List < Base
     def base_path

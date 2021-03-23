@@ -1,17 +1,17 @@
+# frozen_string_literal: true
+
 module ActionKitRest
   module Response
     class Wrapper
       include Enumerable
       extend Forwardable
 
-      attr_reader :response
-      attr_reader :kind
-      attr_reader :obj
+      attr_reader :response, :kind, :obj
 
       def_delegators :body, :empty?, :size, :include?, :length, :to_a, :first, :flatten, :include?, :keys, :[]
 
       def initialize(response)
-        @response    = response
+        @response = response
 
         if response.body.respond_to?(:meta) && response.body.meta
           @kind = :collection
@@ -42,7 +42,7 @@ module ActionKitRest
 
       # Response raw body
       def body
-        @body ? @body : response.body
+        @body || response.body
       end
 
       # Response status
@@ -70,10 +70,10 @@ module ActionKitRest
       # Convert any key to string before calling.
       #
       def [](key)
-        if self.body.is_a?(Array)
-          self.body[key]
+        if body.is_a?(Array)
+          body[key]
         else
-          self.body.send(:"#{key}")
+          body.send(:"#{key}")
         end
       end
 
@@ -112,7 +112,7 @@ module ActionKitRest
             block.call(o)
           end
         else
-          raise("can only iterate over collections")
+          raise('can only iterate over collections')
         end
       end
     end
