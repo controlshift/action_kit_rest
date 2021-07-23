@@ -1,8 +1,8 @@
-# action_kit_rest
+# action\_kit\_rest
 
 A ruby binding for the ActionKit REST API
 
-[![Build Status](https://travis-ci.org/controlshift/action_kit_rest.svg)](https://travis-ci.org/controlshift/action_kit_rest)
+[![CI Status](https://github.com/controlshift/action_kit_rest/actions/workflows/ci.yml/badge.svg)](https://github.com/controlshift/action_kit_rest/actions/workflows/ci.yml)
 
 ## Usage
 
