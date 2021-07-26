@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Nathan Woodhull".freeze, "Diego Marcet".freeze, "Grey Moore".freeze]
-  s.date = "2021-03-23"
+  s.date = "2021-07-23"
   s.description = "Gem for interacting with the ActionKit API".freeze
   s.email = "systems@controlshiftlabs.com".freeze
   s.extra_rdoc_files = [
@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".github/workflows/ci.yml",
     ".rspec",
     ".rubocop.yml",
     ".ruby-gemset",
     ".ruby-version",
-    ".travis.yml",
     "Gemfile",
     "LICENSE.txt",
     "README.md",
@@ -90,35 +90,24 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/controlshift/action_kit_rest".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.0.8".freeze
+  s.rubygems_version = "3.1.6".freeze
   s.summary = "A wrapper for the ActionKit REST API".freeze
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
+  end
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<vertebrae>.freeze, [">= 0.6.0"])
-      s.add_development_dependency(%q<bundler>.freeze, [">= 2.0", "< 3.0"])
-      s.add_development_dependency(%q<byebug>.freeze, [">= 0"])
-      s.add_development_dependency(%q<em-http-request>.freeze, [">= 1.1.5", "< 2.0"])
-      s.add_development_dependency(%q<em-synchrony>.freeze, [">= 1.0.6", "< 2.0"])
-      s.add_development_dependency(%q<eventmachine>.freeze, [">= 1.2.5", "< 2.0"])
-      s.add_development_dependency(%q<juwelier>.freeze, [">= 0"])
-      s.add_development_dependency(%q<rspec>.freeze, ["~> 3.7"])
-      s.add_development_dependency(%q<rubocop>.freeze, [">= 0"])
-      s.add_development_dependency(%q<webmock>.freeze, ["~> 3.3"])
-    else
-      s.add_dependency(%q<vertebrae>.freeze, [">= 0.6.0"])
-      s.add_dependency(%q<bundler>.freeze, [">= 2.0", "< 3.0"])
-      s.add_dependency(%q<byebug>.freeze, [">= 0"])
-      s.add_dependency(%q<em-http-request>.freeze, [">= 1.1.5", "< 2.0"])
-      s.add_dependency(%q<em-synchrony>.freeze, [">= 1.0.6", "< 2.0"])
-      s.add_dependency(%q<eventmachine>.freeze, [">= 1.2.5", "< 2.0"])
-      s.add_dependency(%q<juwelier>.freeze, [">= 0"])
-      s.add_dependency(%q<rspec>.freeze, ["~> 3.7"])
-      s.add_dependency(%q<rubocop>.freeze, [">= 0"])
-      s.add_dependency(%q<webmock>.freeze, ["~> 3.3"])
-    end
+  if s.respond_to? :add_runtime_dependency then
+    s.add_runtime_dependency(%q<vertebrae>.freeze, [">= 0.6.0"])
+    s.add_development_dependency(%q<bundler>.freeze, [">= 2.0", "< 3.0"])
+    s.add_development_dependency(%q<byebug>.freeze, [">= 0"])
+    s.add_development_dependency(%q<em-http-request>.freeze, [">= 1.1.5", "< 2.0"])
+    s.add_development_dependency(%q<em-synchrony>.freeze, [">= 1.0.6", "< 2.0"])
+    s.add_development_dependency(%q<eventmachine>.freeze, [">= 1.2.5", "< 2.0"])
+    s.add_development_dependency(%q<juwelier>.freeze, [">= 0"])
+    s.add_development_dependency(%q<rspec>.freeze, ["~> 3.7"])
+    s.add_development_dependency(%q<rubocop>.freeze, [">= 0"])
+    s.add_development_dependency(%q<webmock>.freeze, ["~> 3.3"])
   else
     s.add_dependency(%q<vertebrae>.freeze, [">= 0.6.0"])
     s.add_dependency(%q<bundler>.freeze, [">= 2.0", "< 3.0"])
