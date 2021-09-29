@@ -25,5 +25,15 @@ describe ActionKitRest::Response::ValidationError do
         expect(subject.to_s).to eq "ActionKitRest::Response::ValidationError \n url: #{url} \n body: #{body} \n errors: #{errors.inspect}"
       end
     end
+
+    context 'with a body in ASCII-8BIT format' do
+      let(:url) { 'https://actionkit.example.com/rest/v1/page/1' }
+      let(:errors) { {'mailing_id' => ['לא הצלחנו לקשר בין מספר הזיהוי של רשימת הדיוור הזו לבין החשבון.']} }
+      let(:body) { { errors: errors }.to_json.b }
+
+      it 'should put information in the string' do
+        expect(subject.to_s).to eq "ActionKitRest::Response::ValidationError \n url: #{url} \n body: {\"errors\":#{errors.to_json}} \n errors: #{errors.inspect}"
+      end
+    end
   end
 end
