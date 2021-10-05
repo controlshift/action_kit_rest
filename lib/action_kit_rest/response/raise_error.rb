@@ -8,7 +8,7 @@ module ActionKitRest
         if (400...600).include? status_code
           if status_code == 400
             response_body = response[:body]
-            if JSON.parse(response_body)['errors'] == { 'mailing_id' => ['Unable to associate this mailing ID with account.'] }
+            if ActionKitRest::Response::InvalidAkidError.matches?(JSON.parse(response_body)['errors'])
               raise ActionKitRest::Response::InvalidAkidError.new(url: response[:url].to_s, body: response_body)
             else
               raise ActionKitRest::Response::ValidationError.new(url: response[:url].to_s, body: response_body)
