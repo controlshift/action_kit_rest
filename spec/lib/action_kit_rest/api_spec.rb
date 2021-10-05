@@ -29,8 +29,16 @@ describe ActionKitRest::API do
     context '400 response' do
       let(:response_status) { 400 }
 
-      context 'unable to associate mailing_id' do
+      context 'unable to associate mailing ID' do
         let(:response_body) { '{"errors": {"mailing_id": ["Unable to associate this mailing ID with account."]}}' }
+
+        it 'should raise an InvalidAkidError' do
+          expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::InvalidAkidError)
+        end
+      end
+
+      context 'unable to associate mailing ID error in Hebrew' do
+        let(:response_body) { '{"errors": {"mailing_id": ["לא הצלחנו לקשר בין מספר הזיהוי של רשימת הדיוור הזו לבין החשבון."]}}' }
 
         it 'should raise an InvalidAkidError' do
           expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::InvalidAkidError)

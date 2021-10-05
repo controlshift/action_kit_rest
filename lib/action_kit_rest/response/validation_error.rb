@@ -7,7 +7,7 @@ module ActionKitRest
 
       def initialize(params)
         self.url = params[:url]
-        self.body = params[:body]
+        self.body = params[:body].dup
         self.errors = JSON.parse(params[:body])['errors']
         super()
       end
