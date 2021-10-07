@@ -27,7 +27,7 @@ module ActionKitRest
                          'לא הצלחנו לקשר בין מספר הזיהוי של רשימת הדיוור הזו לבין החשבון.'].freeze
 
       def self.matches?(errors)
-        return false unless errors.keys == ['mailing_id']
+        return false unless errors&.keys == ['mailing_id']
 
         mailing_id_errors = errors['mailing_id']
         return false unless mailing_id_errors.size == 1

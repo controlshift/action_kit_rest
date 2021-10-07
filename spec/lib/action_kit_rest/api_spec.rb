@@ -52,6 +52,14 @@ describe ActionKitRest::API do
           expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::ValidationError)
         end
       end
+
+      context 'no errors key in response' do
+        let(:response_body) { '{"strange": "things are happening here"}' }
+
+        it 'sould raise a ValidationError' do
+          expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::ValidationError)
+        end
+      end
     end
 
     context '401 response' do
