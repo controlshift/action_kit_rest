@@ -24,7 +24,8 @@ module ActionKitRest
 
     class InvalidAkidError < ValidationError
       MATCHING_ERRORS = ['Unable to associate this mailing ID with account.',
-                         'לא הצלחנו לקשר בין מספר הזיהוי של רשימת הדיוור הזו לבין החשבון.'].freeze
+                         'לא הצלחנו לקשר בין מספר הזיהוי של רשימת הדיוור הזו לבין החשבון.',
+                         'لم ننجح في مطابقة العنوان الالكتروني مع الحساب.'].freeze
 
       def self.matches?(errors)
         return false unless errors&.keys == ['mailing_id']
