@@ -24,10 +24,10 @@ module ActionKitRest
             if error_message == 'Sorry, this request could not be processed. Please try again later.'
               raise ActionKitRest::Response::TryAgainLater, error_message(response)
             else
-              raise StandardError, error_message(response)
+              raise ActionKitRest::Response::UnknownServerError, error_message(response)
             end
           else
-            raise StandardError, error_message(response)
+            raise ActionKitRest::Response::UnknownServerError, error_message(response)
           end
         end
       end
@@ -36,6 +36,8 @@ module ActionKitRest
         "#{response[:method].to_s.upcase} #{response[:url]}: #{response[:status]} \n\n #{response[:body]}"
       end
     end
+
+    class UnknownServerError < StandardError; end
 
     class TryAgainLater < StandardError; end
 
