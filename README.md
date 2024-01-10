@@ -76,6 +76,12 @@ Use this action for retrieving the eventsignup details (see the schema at: https
 
 Use this object for retrieving and updating an event attendee. For creating new attendees must POST an action on an eventsignuppage.
 
+### Releasing
+
+* bump the version (update the appropriate file and add a git tag)
+* do a gem build, which will build a .gem file with the version number in the filename
+* do a gem push of that gem file you just built. You'll need to be a gem owner to do this.
+
 ## Copyright
 
 Copyright (c) 2013 ControlShift Ltd. See LICENSE.txt for
