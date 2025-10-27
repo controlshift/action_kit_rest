@@ -60,6 +60,14 @@ describe ActionKitRest::API do
           expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::ValidationError)
         end
       end
+
+      context 'non-hash errors key in response' do
+        let(:response_body) { '{"errors": "what is going on?"}' }
+
+        it 'sould raise a ValidationError' do
+          expect{ subject.post_request('something/', request_body) }.to raise_error(ActionKitRest::Response::ValidationError)
+        end
+      end
     end
 
     context '401 response' do

@@ -28,7 +28,7 @@ module ActionKitRest
                          'لم ننجح في مطابقة العنوان الالكتروني مع الحساب.'].freeze
 
       def self.matches?(errors)
-        return false unless errors&.keys == ['mailing_id']
+        return false unless errors.try(:keys) == ['mailing_id']
 
         mailing_id_errors = errors['mailing_id']
         return false unless mailing_id_errors.size == 1
