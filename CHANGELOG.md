@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.4.11] - 2025-10-27
+
+### Bugfixes
+- Avoids a crash in error handling when ActionKit returns a response with a non-object "errors" value
+
 ## [0.4.10] - 2024-01-10
 
 ### Added
