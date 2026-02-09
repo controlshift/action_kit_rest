@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"].freeze
 
   # Runtime dependencies
-  spec.add_dependency "vertebrae", ">= 1.0.5"
+  spec.add_dependency "vertebrae", "~> 1.0.5"
   spec.add_dependency "hashie", "~> 5.1.0"
   spec.add_dependency "faraday", "~> 2.0"  # We use Faraday 2.x APIs directly (Faraday::Middleware, etc.)
   spec.add_dependency "faraday-mashify", "~> 1.0"  # Required in lib/action_kit_rest/api.rb
