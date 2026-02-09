@@ -13,7 +13,7 @@ module ActionKitRest
       # (user.phones attribute includes the path for associated phones, not the data itself)
       if user.id.present? && user.phones.any?
         phones_list = client.phone.list(user: user.id)
-        user.obj.phones = phones_list.collection? ? phones_list.obj.to_a : phones_list.obj
+        user.obj.phones = phones_list.obj
       end
 
       user

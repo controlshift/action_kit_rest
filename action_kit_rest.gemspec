@@ -5,7 +5,7 @@ require_relative "lib/action_kit_rest/version"
 Gem::Specification.new do |spec|
   spec.name = "action_kit_rest"
   spec.version = ActionKitRest::VERSION::STRING
-  spec.authors = ["Nathan Woodhull", "Diego Marcet", "Grey Moore"]
+  spec.authors = ["Nathan Woodhull", "Diego Marcet", "Grey Moore", "Owens Ehimen"]
   spec.email = ["systems@controlshiftlabs.com"]
 
   spec.summary = "A wrapper for the ActionKit REST API"
@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/master/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -26,10 +27,13 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[bin/ spec/ .git .github .document .idea coverage/])
     end
   end
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib"].freeze
 
   # Runtime dependencies
-  spec.add_dependency "vertebrae", ">= 0.6.0"
+  spec.add_dependency "vertebrae", ">= 1.0.5"
+  spec.add_dependency "faraday", "~> 2.0"  # We use Faraday 2.x APIs directly (Faraday::Middleware, etc.)
+  spec.add_dependency "faraday-mashify", "~> 1.0"  # Required in lib/action_kit_rest/api.rb
+  spec.add_dependency "hashie", ">= 5.0"
 
   # Development dependencies
   spec.add_development_dependency "bundler", ">= 2.0", "< 3.0"
