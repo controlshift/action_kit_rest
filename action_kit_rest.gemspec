@@ -31,9 +31,9 @@ Gem::Specification.new do |spec|
 
   # Runtime dependencies
   spec.add_dependency "vertebrae", ">= 1.0.5"
+  spec.add_dependency "hashie", "~> 5.1.0"
   spec.add_dependency "faraday", "~> 2.0"  # We use Faraday 2.x APIs directly (Faraday::Middleware, etc.)
   spec.add_dependency "faraday-mashify", "~> 1.0"  # Required in lib/action_kit_rest/api.rb
-  spec.add_dependency "hashie", ">= 5.0"
 
   # Development dependencies
   spec.add_development_dependency "bundler", ">= 2.0", "< 3.0"

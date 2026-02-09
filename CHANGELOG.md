@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.4.12] - 2026-02-09
+## [1.0.0] - 2026-02-09
 
 ### Changed
 - Upgraded to Ruby 4.0.1 compatibility
