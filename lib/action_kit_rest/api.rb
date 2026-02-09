@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'faraday/mashify'
-
 module ActionKitRest
   class API < Vertebrae::API
     def request(*args)
