@@ -38,7 +38,8 @@ describe ActionKitRest::User do
           let(:phone_body) { fixture('phone/object.json') }
 
           it 'should include phones' do
-            stub_get('phone/?user=1').to_return(body: phone_body, status: 200)
+            stub_get('phone/?user=1').to_return(body: phone_body, status: 200,
+                                                headers: { content_type: 'application/json; charset=utf-8' })
             expect(subject.user.get(1).phones.count).to eq 3
             expect(subject.user.get(1).phones.map(&:phone)).to match_array(%w[7755555555 7755555577 310-310-3310])
           end

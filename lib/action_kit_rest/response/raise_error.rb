@@ -2,7 +2,7 @@
 
 module ActionKitRest
   module Response
-    class RaiseError < Faraday::Response::Middleware
+    class RaiseError < Faraday::Middleware
       def on_complete(response)
         status_code = response[:status].to_i
         if (400...600).include? status_code
