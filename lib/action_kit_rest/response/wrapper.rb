@@ -8,7 +8,7 @@ module ActionKitRest
 
       attr_reader :response, :kind, :obj
 
-      def_delegators :body, :empty?, :size, :include?, :length, :to_a, :first, :flatten, :include?, :keys, :[]
+      def_delegators :body, :empty?, :size, :include?, :length, :to_a, :first, :flatten, :keys
 
       def initialize(response)
         @response = response
