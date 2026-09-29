@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] - 2026-09-29
+
+### Changed
+- Loosened the `vertebrae` dependency from `~> 1.0.5` to `>= 1.0.5, < 3.0`, to allow picking up vertebrae 2.0.0 (fixes a duplicate-slash request path bug, see controlshift/vertebrae#8)
+
 ## [1.0.0] - 2026-02-09
 
 ### Changed
